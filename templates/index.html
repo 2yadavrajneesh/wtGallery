@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block style %}
+<style>
+.custom-button {
+  font-size:0.5em;
+  padding:2px;
+}
+  /* Rounded pill classes for horizontal sides */
+  .rounded-pill-left {
+    border-top-left-radius: 50rem !important;
+    border-bottom-left-radius: 50rem !important;
+  }
+  .rounded-pill-right {
+    border-top-right-radius: 50rem !important;
+    border-bottom-right-radius: 50rem !important;
+  }
+
+  /* Another classes to use */
+  .rounded-t-l-0 {
+    border-top-left-radius: 0 !important;
+  }
+  .rounded-t-r-0 {
+    border-top-right-radius: 0 !important;
+  }
+  .rounded-b-l-0 {
+    border-bottom-left-radius: 0 !important;
+  }
+  .rounded-b-r-0 {
+    border-bottom-right-radius: 0 !important;
+  }
+  .rounded-x-l-0 {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  .rounded-x-r-0 {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url({% static 'assets/img/gray-and-black.jpg' %})">
+    <div class="container" style="margin-top:80px;">
+      <h2 class="" style="color:#d9232d;">The best free stock photos shared by Gifted Creators.</h2>
+      <h4 style="color:black">Collection of Large images for free use.</h4>
+      <form action="{% url 'search' %}" method="get">
+          <div class="row">
+            <div class="col-md-12 mt-5">
+              <div class="input-group">
+                <input class="form-control p-4 border rounded-pill-left border-right-0" name="q" type="search" placeholder="What're you searching for?" id="example-search-input">
+                <span class="input-group-append">
+                  <button class="btn btn-outline-secondary border rounded-pill-right border-left-0 pl-4 pr-4" type="button">
+                      <i class="bx bx-search-alt bx-spin" style="color:#d9232d;"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+      </form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <p>Recent Images</p>
+          <h2></h2>
+        </div>
+
+        <div class="row portfolio-container">
+          {% for portfolio in portfolio %}
+
+          <div class="col-lg-4 col-md-6 portfolio-item">
+            <div class="portfolio-wrap">
+              <img src="{{ portfolio.file.url }}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{ portfolio.title }}</h4>
+
+                <p style="font-size: 11px">Uploaded by {{portfolio.user}} </p>
+
+                <div class="portfolio-links">
+                  <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
+                    <i class="bx bx-show-alt"></i>
+                  </a>
+                  <a href="{{ portfolio.file.url }}" title="Download" download>
+                    <i class='bx bxs-download pl-2'></i>
+                  </a>
+                  <a href="#" title="Hire Me">
+                    <button type="button" class="float- custom-button btn-danger btn-sm">Hire Me</button>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+{% block script %}
+
+<script>
+
+</script>
+
+{% endblock script %}
+
+{% endblock body %}

@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Upload {% endblock %}
+{% block style %}
+<style>
+    #file {
+    opacity: 0;
+    }
+
+    #image-label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+    }
+
+    .image-area {
+        border: 2px dashed rgba(255, 255, 255, 0.7);
+        padding: 1rem;
+        position: relative;
+    }
+
+    .image-area::before {
+        content: '';
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.8rem;
+        z-index: 1;
+    }
+
+    .image-area img {
+        z-index: 2;
+        position: relative;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+    <section id="portfolio" class="portfolio">
+        <div class="container" style="margin-top:100px;">
+            <div class="section-title">
+                <h2>Upload Photo</h2>
+                <p>Show your creativity to the world</p>
+            </div>
+
+            <div class="container d-flex justify-content-center mb-5">
+                <div class="card col-lg-8 col-md-8">
+                    <div class="messages col-lg-10 col-md-10 pt-4">
+                        {% for message in messages %}
+                            <p {% if message.tags %} class="{{ message.tags }} alert alert-secondary" role="alert"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <form class="mt-4" method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group col-lg-12 col-md-12 mb-0">
+                                {{ form.title|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 mb-0">
+                                <div class="input-group mb-3 px-2 py-2 bg-white shadow-sm">
+                                    <input required id="file" name="file" type="file" onchange="readURL(this);" class="form-control border-0">
+                                    <label id="image-label" name="file" for="file" class="font-weight-light text-muted">Choose file</label>
+                                    <div class="input-group-append">
+                                        <label for="file" name="file" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                    </div>
+                                </div>
+
+                                <!-- Uploaded image area-->
+                                <p class="font-italic text-black text-center">The File uploaded will be rendered inside the box below.</p>
+                                <div class="image-area mt-4 w-50 mb-2"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 mb-3 mt-3">
+                                <input type="checkbox" name="checkbox" value="check" id="agree"/> I have read and agree to the Terms and Conditions and Privacy Policy
+                            </div>
+                            <div class="form-group mb-4">
+                                <button type="submit" class="col-lg-12 col-md-12 btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- End Portfolio Section -->
+
+{% block script %}
+
+<script>
+    /*  ==========================================
+        SHOW UPLOADED IMAGE
+    * ========================================== */
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(function () {
+        $('#image').on('change', function () {
+            readURL(input);
+        });
+    });
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE NAME
+    * ========================================== */
+    var input = document.getElementById( 'image' );
+    var infoArea = document.getElementById( 'image-label' );
+
+    input.addEventListener( 'change', showFileName );
+    function showFileName( event ) {
+      var input = event.srcElement;
+      var fileName = input.files[0].name;
+      infoArea.textContent = 'File name: ' + fileName;
+    }
+</script>
+
+{% endblock script %}
+
+{% endblock body %}
