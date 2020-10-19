@@ -2,7 +2,6 @@
 
 import json
 import os
-
 from django import template
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
