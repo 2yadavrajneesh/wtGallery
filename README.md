@@ -1,4 +1,4 @@
-# wtGallery
+# [wtGallery](https://wtgallery.herokuapp.com/ "wtGallery")
 
 India's own website like pixabay or pexels, which developed on Python - Django. #AtmaNirbharBharat
 
@@ -12,7 +12,6 @@ India's own website like pixabay or pexels, which developed on Python - Django. 
 4. Mobile Friendly website.
 
 5. User own dashboard where they can manage their profile.
-
 
 **How to get this project**
 1. Clone this project and open it on your python IDE.
@@ -29,17 +28,17 @@ India's own website like pixabay or pexels, which developed on Python - Django. 
     ```
     1. python manage.py makemigrations
     ```
-    
     ```
     2. python manage.py migrate
     ```
-    
     ```
     3. python maage.py runserver
     ```
 
 
 **After all these settings and installations, you'll get this:**
+
+- You can visit our Test Website also :- [wTGallery](https://wtgallery.herokuapp.com/ "WTGALLERY")
 
 - Home
 
