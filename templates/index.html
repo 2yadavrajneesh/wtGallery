@@ -86,11 +86,11 @@
 
                 <p style="font-size: 11px">Uploaded by {{portfolio.user}} </p>
 
-                <div class="portfolio-links">
+                <div class="portfolio-links" id="no-link">
                   <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
                     <i class="bx bx-show-alt"></i>
                   </a>
-                  <a href="{{ portfolio.file.url }}" title="Download" download>
+                  <a href="javascript:void(0)" onclick="location.href='{{ portfolio.file.url }}'" title="Download" download>
                     <i class='bx bxs-download pl-2'></i>
                   </a>
                   <a href="#" title="Hire Me">
@@ -110,10 +110,6 @@
   </main><!-- End #main -->
 
 {% block script %}
-
-<script>
-
-</script>
 
 {% endblock script %}
 
