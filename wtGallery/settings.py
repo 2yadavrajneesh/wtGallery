@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wtgallery.herokuapp.com']
 
 
 # Application definition
@@ -144,9 +144,9 @@ LOGOUT_REDIRECT_URL = '/'
 # AWS Settings
 
 AWS_LOCATION = 'static'
-AWS_ACCESS_KEY_ID = 'AKIAW5UZ5LKCN4GJHYN6'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'wtgallery'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=86400',
