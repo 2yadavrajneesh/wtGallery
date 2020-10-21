@@ -28,6 +28,15 @@
   <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
+  <!--  Video.js -->
+  <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+  <!-- Forest -->
+  <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
@@ -50,6 +59,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
+          <li><a href="{% url 'video' %}">Video</a></li>
           <li class="drop-down" {% if request.path != '/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
             <ul>
               <li><a href="{% url 'login' %}">Login</a></li>
@@ -159,6 +169,8 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
 
 </body>
 

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Video {% endblock %}
+{% block style %}
+<style>
+</style>
+{% endblock %}
+
+{% block body %}
+  <main id="main" style="margin-top:80px;">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <p>Recent Video's</p>
+          <h2></h2>
+        </div>
+
+        <div class="row portfolio-container">
+          {% for portfolio in portfolio %}
+
+          <div class="col-lg-4 col-md-6 portfolio-item">
+              <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto" width="360" height="264" data-setup="{}">
+                <source src="{{ portfolio.file.url }}" type="video/mp4">
+              </video>
+          </div>
+
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+{% block script %}
+
+{% endblock script %}
+
+{% endblock body %}
