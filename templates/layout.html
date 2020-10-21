@@ -59,8 +59,8 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="{% url 'video' %}">Video</a></li>
-          <li class="drop-down" {% if request.path != '/'  or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
+          <li><a href="{% url 'video' %}">Videos</a></li>
+          <li class="drop-down" {% if request.path != '/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
             <ul>
               <li><a href="{% url 'login' %}">Login</a></li>
               <li><a href="{% url 'register' %}">Register</a></li>
@@ -137,8 +137,10 @@
             <p>Get in touch with us !!</p>
 
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              {% csrf_token %}
+              <input type="email" name="semail"><input type="submit" value="Subscribe">
             </form>
+
 
           </div>
 
