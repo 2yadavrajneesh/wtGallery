@@ -76,7 +76,7 @@ def upload(request):
 
         # Now we can simply use == to check for equality, no need for wildcards.
 
-        if ext == ".mp4" or ".mkv":
+        if ext == ".mp4":
             print("mp4!")
 
             if video.is_valid:
