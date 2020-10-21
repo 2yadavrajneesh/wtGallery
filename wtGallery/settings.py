@@ -26,8 +26,8 @@ SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['wtgallery.herokuapp.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wtgallery.herokuapp.com']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
