@@ -20,16 +20,23 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ search.image.url }}" class="img-fluid" alt="">
+              <img src="{{ search.file.url }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ search.title }}</h4>
-                <div class="portfolio-links">
-                  <a href="{{ search.image.url }}" data-gall="portfolioGallery" class="venobox" title="{{ search.title }}">
+
+                <p style="font-size: 11px">Uploaded by {{search.user}} </p>
+
+                <div class="portfolio-links" id="no-link">
+                  <a href="{{ search.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
                     <i class="bx bx-show-alt"></i>
                   </a>
-                  <a href="{{ search.image.url }}" title="{{ search.title }}" download>
+                  <a download href="{{ search.file.url }}" title="Download" target="_blank">
                     <i class='bx bxs-download pl-2'></i>
                   </a>
+                  <a href="#" title="Hire Me">
+                    <button type="button" class="float- custom-button btn-danger btn-sm">Hire Me</button>
+                  </a>
+
                 </div>
               </div>
             </div>
