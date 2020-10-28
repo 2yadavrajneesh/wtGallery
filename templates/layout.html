@@ -55,12 +55,13 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <a href="{% url 'upload' %}" class="get-started-btn ml-auto" {% if request.path != '/' %} style="display: none;" {% endif %}>Upload</a>
+      <a href="{% url 'upload' %}" class="get-started-btn ml-auto" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' %} style="display: none;" {% endif %}>Upload</a>
 
-      <nav class="nav-menu d-none d-lg-block">
+      <nav class="nav-menu d-flex justify-content-end d-lg-block">
         <ul>
-          <li><a href="{% url 'video' %}">Video</a></li>
-          <li class="drop-down" {% if request.path != '/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
+          <li {% if request.path != '/video/' %} style="display: none;" {% endif %}><a href="{% url 'image' %}">Image</a></li>
+          <li {% if request.path != '/' and request.path != '/image/' %} style="display: none;" {% endif %}><a href="{% url 'video' %}">Video</a></li>
+          <li class="drop-down" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
             <ul>
               <li><a href="{% url 'login' %}">Login</a></li>
               <li><a href="{% url 'register' %}">Register</a></li>

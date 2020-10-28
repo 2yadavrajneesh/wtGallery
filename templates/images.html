@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Images {% endblock %}
+{% block style %}
+<style>
+</style>
+{% endblock %}
+
+{% block body %}
+  <main id="main" style="margin-top:78px;">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <p>Recent Images</p>
+          <h2></h2>
+        </div>
+
+        <div class="row portfolio-container">
+          {% for portfolio in portfolio %}
+
+          <div class="col-lg-4 col-md-6 portfolio-item">
+            <div class="portfolio-wrap">
+              <img src="{{ portfolio.file.url }}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{ portfolio.title }}</h4>
+
+                <p style="font-size: 11px">Uploaded by {{portfolio.user}} </p>
+
+                <div class="portfolio-links" id="no-link">
+                  <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
+                    <i class="bx bx-show-alt"></i>
+                  </a>
+                  <a download href="{{ portfolio.file.url }}" title="Download" target="_blank">
+                    <i class='bx bxs-download pl-2'></i>
+                  </a>
+                  <a href="#" title="Hire Me">
+                    <button type="button" class="float- custom-button btn-danger btn-sm">Hire Me</button>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+{% block script %}
+
+{% endblock script %}
+
+{% endblock body %}

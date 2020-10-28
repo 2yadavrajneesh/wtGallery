@@ -26,8 +26,8 @@ SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wtgallery.herokuapp.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['wtgallery.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -82,11 +82,14 @@ WSGI_APPLICATION = 'wtGallery.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'wtgallery',
+        'USER': 'yadavrajneesh',
+        'PASSWORD': 'redhat123',
+        'HOST': 'wtproduct.cikxpmlxhvqo.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -164,8 +167,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
+STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 AWS_DEFAULT_ACL = None
 
 

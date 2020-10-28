@@ -22,6 +22,12 @@ def index(request):
     return render(request, "index.html", context)
 
 
+def image(request):
+    portfolio = Image.objects.all()
+    context = {"portfolio": portfolio}
+    return render(request, "images.html", context)
+
+
 def video(request):
     portfolio = Video.objects.all()
     context = {"portfolio": portfolio}
@@ -77,7 +83,19 @@ def upload(request):
         # Now we can simply use == to check for equality, no need for wildcards.
 
         if ext == ".mp4":
-            print("mp4!")
+            print("mp4 file!")
+
+            if video.is_valid:
+                # form.save()
+                fs = video.save(commit=False)
+                fs.user = request.user
+                fs.save()
+                messages.success(request, 'Video inserted successfully.')
+
+                return redirect('upload')
+
+        if ext == ".mkv":
+            print("mkv file!")
 
             if video.is_valid:
                 # form.save()

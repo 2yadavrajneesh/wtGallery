@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('upload/', views.upload, name='upload'),
     path('video/', views.video, name='video'),
+    path('image/', views.image, name='image'),
     path('login/', views.login_view, name='login'),
     path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     path('register/', views.register, name='register'),
