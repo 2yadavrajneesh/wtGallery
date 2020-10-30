@@ -1,1 +1,1 @@
-web: gunicorn wtgallery.wsgi --log-file - 
+web: gunicorn wtGallery.wsgi --log-file - 
