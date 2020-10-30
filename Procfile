@@ -1,2 +1,1 @@
-web: gunicorn wtGallery.wsgi
-web: gunicorn wtGallery:app --max-requests 1200
+web: gunicorn wtgallery.wsgi --log-file - 
