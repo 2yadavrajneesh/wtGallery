@@ -1,1 +1,1 @@
-worker: gunicorn wtGallery.wsgi
+web: gunicorn wtGallery.wsgi
