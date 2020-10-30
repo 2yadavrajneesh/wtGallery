@@ -110,14 +110,14 @@ def upload(request):
             print("image file!")
 
             if image.is_valid():
-                if nude.is_nude(request.FILES['file']):
-                    messages.warning(request, 'Inappropriate image detected, This is against our company policy !!')
-                else:
+                # if nude.is_nude(request.FILES['file']):
+                #     messages.warning(request, 'Inappropriate image detected, This is against our company policy !!')
+                # else:
                     # form.save()
-                    fs = image.save(commit=False)
-                    fs.user = request.user
-                    fs.save()
-                    messages.success(request, 'Image inserted successfully.')
+                fs = image.save(commit=False)
+                fs.user = request.user
+                fs.save()
+                messages.success(request, 'Image inserted successfully.')
 
                 return redirect('upload')
 
