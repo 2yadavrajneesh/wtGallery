@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'wtGallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wtgallery',
-        'USER': 'yadavrajneesh',
-        'PASSWORD': 'redhat123',
-        'HOST': 'wtproduct.cikxpmlxhvqo.ap-south-1.rds.amazonaws.com',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
@@ -148,13 +148,9 @@ LOGOUT_REDIRECT_URL = '/'
 # AWS Settings
 
 
-# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-AWS_ACCESS_KEY_ID = 'AKIAW5UZ5LKCN4GJHYN6'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'wtgallery'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_CLOUDFRONT_DOMAIN = 'daptyqpe4xgxm.cloudfront.net'
