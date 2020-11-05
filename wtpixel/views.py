@@ -3,23 +3,39 @@
 import json
 import os
 from django import template
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.http import HttpResponse, Http404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
-from django.views.generic import ListView
-from wtpixel.forms import ImageForm, SignUpForm, LoginForm, VideoForm
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, DetailView
+from django.views.generic.base import View
+from wtpixel.forms import ImageForm, SignUpForm, LoginForm, VideoForm, MusicForm
 from django.contrib import messages
-from wtpixel.models import Image, Video
+from wtpixel.models import Image, Video, Music
 import nude
 
 
-def index(request):
-    portfolio = Image.objects.all()
-    context = {"portfolio": portfolio}
-    return render(request, "index.html", context)
+# def index(request):
+#     portfolio = Image.objects.all()
+#     context = {"portfolio": portfolio}
+#     return render(request, "index.html", context)
+
+class IndexView(ListView):
+    model = Image
+    paginate_by = 10
+    context_object_name = 'portfolios'
+    template_name = 'index.html'
+    ordering = ['title']
+
+
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    us = User.objects.filter(username = user)
+    return render(request, 'dashboard.html', {'profile': us})
 
 
 def image(request):
@@ -32,6 +48,13 @@ def video(request):
     portfolio = Video.objects.all()
     context = {"portfolio": portfolio}
     return render(request, "video.html", context)
+
+
+def music(request):
+    portfolio = Music.objects.all()
+    print(portfolio)
+    context = {"portfolio": portfolio}
+    return render(request, "music.html", context)
 
 
 def register(request):
@@ -75,6 +98,7 @@ def upload(request):
     if request.method == 'POST':
         image = ImageForm(request.POST, request.FILES)
         video = VideoForm(request.POST, request.FILES)
+        music = MusicForm(request.POST, request.FILES)
 
         # Split the extension from the path and normalise it to lowercase.
         ext = os.path.splitext(str(request.FILES['file']))[-1].lower()
@@ -94,7 +118,7 @@ def upload(request):
 
                 return redirect('upload')
 
-        if ext == ".mkv":
+        elif ext == ".mkv":
             print("mkv file!")
 
             if video.is_valid:
@@ -103,6 +127,18 @@ def upload(request):
                 fs.user = request.user
                 fs.save()
                 messages.success(request, 'Video inserted successfully.')
+
+                return redirect('upload')
+
+        elif ext == ".mp3":
+            print("mp3 file!")
+
+            if music.is_valid:
+                # form.save()
+                fs = music.save(commit=False)
+                fs.user = request.user
+                fs.save()
+                messages.success(request, 'Music inserted successfully.')
 
                 return redirect('upload')
 

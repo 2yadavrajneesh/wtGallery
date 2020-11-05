@@ -21,3 +21,13 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Music(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=255, blank=False)
+    file = models.FileField(upload_to='musics', blank=False)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

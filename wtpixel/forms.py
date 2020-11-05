@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from wtpixel.models import Image, Video
+from wtpixel.models import Image, Video, Music
 from django.contrib.auth.models import User
 
 
@@ -60,3 +60,13 @@ class VideoForm(forms.ModelForm):
         def save(self):
             video = super(VideoForm, self).save()
             return video
+
+
+class MusicForm(forms.ModelForm):
+    class Meta:
+        model = Music
+        fields = ('title', 'file')
+
+        def save(self):
+            music = super(MusicForm, self).save()
+            return music

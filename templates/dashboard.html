@@ -1,0 +1,21 @@
+<html>
+{% load static %}
+<head>
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+      <div class="container">
+
+        <div class="mt-5">
+          {% for pr in profile %}
+
+          <div class="">{{pr.first_name}} {{pr.last_name}}, More will coming soon!!</div>
+
+          {% endfor %}
+        </div>
+
+      </div>
+</body>
+</html>
+
+

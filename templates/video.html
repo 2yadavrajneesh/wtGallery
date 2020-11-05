@@ -24,6 +24,14 @@
               <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto" width="360" height="264" data-setup="{}">
                 <source src="{{ portfolio.file.url }}" type="video/mp4">
               </video>
+              <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 10px;">
+                <p class="float-left">
+                  <span class="font-weight-bold">Uploaded by:</span> <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a>
+                </p>
+                <p class="float-right">
+                  <span class="font-weight-bold">Views:</span> 2
+                </p>
+              </div>
           </div>
 
           {% endfor %}
