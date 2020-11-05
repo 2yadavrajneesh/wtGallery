@@ -84,9 +84,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'wtgallery',
-        'USER': 'yadavrajneesh',
-        'PASSWORD': 'redhat123',
-        'HOST': 'wtproduct.cikxpmlxhvqo.ap-south-1.rds.amazonaws.com',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
