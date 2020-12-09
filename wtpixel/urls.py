@@ -6,8 +6,8 @@ from django.conf import settings
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    # path('', views.index, name='index'),
-    path('', views.IndexView.as_view(), name='index'),
+    path('', views.index, name='index'),
+    # path('', views.IndexView.as_view(), name='index'),
     path('profile/<str:username>', views.profile, name='profile'),
     path('upload/', views.upload, name='upload'),
     path('video/', views.video, name='video'),

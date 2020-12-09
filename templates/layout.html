@@ -3,12 +3,10 @@
 {% load static %}
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="index, follow, archive" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{% block title %} {% endblock %} | wtGallery</title>
-  <meta content="" name="description">
+  <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -16,30 +14,29 @@
   <link href="{% static 'apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
 
+  <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
   <!--  Video.js -->
   <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-
   <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
   <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-
   <!-- Forest -->
   <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-
   {% block head %}
 
   {% endblock %}
@@ -53,70 +50,67 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo"><a href="{% url 'index' %}">WT<span style="color:#d9232d">Gallery</span></a></h1>
+      <h1 class="logo mr-auto"><a href="{% url 'index' %}">wt<span style="">Gallery</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <a href="{% url 'upload' %}" class="get-started-btn ml-auto" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' %} style="display: none;" {% endif %}>Upload</a>
-
-      <nav class="nav-menu d-flex justify-content-end d-lg-block">
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <a href="{% url 'upload' %}" class="get-started-btn" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' %} style="display: none;" {% endif %}>Upload</a>
+      <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li {% if request.path != '/video/' %} style="display: none;" {% endif %}><a href="{% url 'image' %}">Image</a></li>
           <li {% if request.path != '/' and request.path != '/image/' %} style="display: none;" {% endif %}><a href="{% url 'video' %}">Video</a></li>
-          <li class="drop-down" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#">Other Services</a>
+          <li class="drop-down" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#"><i class="ri-settings-3-line"></i></a>
             <ul>
+              <li><a href="{% url 'image' %}">Image</a></li>
               <li><a href="{% url 'login' %}">Login</a></li>
-              <li><a href="{% url 'register' %}">Register</a></li>
-              <li><a href="#">wtAPI</a></li>
+              <li><a href="{% url 'register' %}">Sign In</a></li>
             </ul>
           </li>
           {% if request.user.is_authenticated %}
             <li class="drop-down"><a href="#">Account</a>
               <ul>
-                <li class="pt-2" style="padding-left:20px;"><span style="color:#d9232d">{{request.user.first_name}} {{request.user.last_name}}</span></li>
+                <li class="pt-2" style="padding-left:20px;"><span style="">{{request.user.first_name}} {{request.user.last_name}}</span></li>
+                <li><a href="{% url 'image' %}">Image</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               </ul>
             </li>
           {% endif %}
+
         </ul>
       </nav>
-    </div>
-  </header><!-- End Header -->
+      <!-- .nav-menu -->
 
+    </div>
+  </header>
+  <!-- End Header -->
 
   <!-- ======= Section ======= -->
   {% block body %}
 
   {% endblock %}
+  <!-- End Section -->
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>WTGallery</h3>
-              <p>
-                Dolpin Connects, Near Ramamurthy Nagar Signal, <br>
-                Bengaluru, India 560043<br><br>
-                <strong>Phone:</strong> +91 9535594891<br>
-                <strong>Email:</strong> info@wittymindstech.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="https://twitter.com/wittymindstech1" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.instagram.com/wittymindstech/" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="https://github.com/wittymindstech" class="github"><i class="bx bxl-github"></i></a>
-                <a href="https://www.youtube.com/channel/UCh54sXW9OwZFvHScesnEE0g" class="google-plus"><i class="bx bxl-youtube"></i></a>
-                <a href="https://in.linkedin.com/in/wittymindstech" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3>WTGALLERY</h3>
+            <p>
+              Dolpin Connects, Near Ramamurthy Nagar Signal, <br>
+              Bengaluru, 560043<br>
+              India <br><br>
+              <strong>Phone:</strong> +91 9535594891<br>
+              <strong>Email:</strong> info@wittymindstech.com<br>
+            </p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
+          <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -132,39 +126,36 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Get in touch with us !!</p>
-
-            <form action="" method="post">
-              {% csrf_token %}
-              <input type="email" name="semail"><input type="submit" value="Subscribe">
-            </form>
-
-
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>wiTTyMinds</span></strong>. All Rights Reserved
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>wtGallery</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="">WittyMinds Technology</a>
+        </div>
       </div>
-      <div class="credits">
-        Designed by <a href="https://wittymindstech.com/">wiTTyMinds Technology</a>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+  <!--  <div id="preloader"></div>-->
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
@@ -174,6 +165,8 @@
   <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
   <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
   <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
@@ -181,6 +174,6 @@
   <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
   <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
-</body>
 
+</body>
 </html>

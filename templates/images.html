@@ -29,7 +29,7 @@
                 <p style="font-size: 11px">Uploaded by {{portfolio.user}} </p>
 
                 <div class="portfolio-links" id="no-link">
-                  <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
+                  <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
                     <i class="bx bx-show-alt"></i>
                   </a>
                   <a download href="{{ portfolio.file.url }}" title="Download" target="_blank">

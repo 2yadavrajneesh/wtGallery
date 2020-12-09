@@ -19,17 +19,17 @@ from wtpixel.models import Image, Video, Music
 import nude
 
 
-# def index(request):
-#     portfolio = Image.objects.all()
-#     context = {"portfolio": portfolio}
-#     return render(request, "index.html", context)
+def index(request):
+    portfolio = Image.objects.all()
+    context = {"portfolios": portfolio}
+    return render(request, "index.html", context)
 
-class IndexView(ListView):
-    model = Image
-    paginate_by = 10
-    context_object_name = 'portfolios'
-    template_name = 'index.html'
-    ordering = ['title']
+# class IndexView(ListView):
+#     model = Image
+#     paginate_by = 10
+#     context_object_name = 'portfolios'
+#     template_name = 'index.html'
+#     ordering = ['title']
 
 
 def profile(request, username):
