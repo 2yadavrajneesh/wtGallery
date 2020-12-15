@@ -24,6 +24,7 @@ def index(request):
     context = {"portfolios": portfolio}
     return render(request, "index.html", context)
 
+
 # class IndexView(ListView):
 #     model = Image
 #     paginate_by = 10
@@ -34,7 +35,7 @@ def index(request):
 
 def profile(request, username):
     user = get_object_or_404(User, username=username)
-    us = User.objects.filter(username = user)
+    us = User.objects.filter(username=user)
     return render(request, 'dashboard.html', {'profile': us})
 
 
@@ -149,7 +150,7 @@ def upload(request):
                 # if nude.is_nude(request.FILES['file']):
                 #     messages.warning(request, 'Inappropriate image detected, This is against our company policy !!')
                 # else:
-                    # form.save()
+                # form.save()
                 fs = image.save(commit=False)
                 fs.user = request.user
                 fs.save()
@@ -185,7 +186,7 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Image.objects.filter(Q(title__icontains=query) | Q(file__icontains=query) )
+        object_list = Image.objects.filter(Q(title__icontains=query) | Q(file__icontains=query))
         print(object_list)
         return object_list
 

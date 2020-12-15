@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html >
+{% extends 'layout.html' %}
 {% load static %}
-<head>
-  <meta charset="UTF-8">
-  <title>Responsive Photography App</title>
+{% block title %} Profile {% endblock %}
+{% block head %}
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600'>
   <link rel="stylesheet" href="{% static 'assets/css/profile-style.css' %}">
+{% endblock %}
 
-</head>
+{% block body %}
 
-<body>
-  <div class="container">
-  <header>
-    <i class="fa fa-bars" aria-hidden="true"></i>
+  <div class="container mb-5" style="margin-top:100px;">
+  <header class="pheader">
   </header>
   <main>
       {% for pr in profile %}
@@ -41,7 +37,7 @@
             <p class="desc-stat">Uploads</p>
           </div>
         </div>
-        <p class="desc">Hi ! My name is Jane Doe. I'm a UI/UX Designer from Paris, in France. I really enjoy photography and moutains.</p>
+        <p class="desc">Hi ! My name is {{pr.first_name}} {{pr.last_name}}. I'm a UI/UX Designer from Paris, in France. I really enjoy photography and moutains.</p>
         <div class="social">
           <i class="fa fa-facebook-square" aria-hidden="true"></i>
           <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -52,7 +48,6 @@
       <div class="right col-lg-8">
         <ul class="nav">
           <li>Gallery</li>
-          <li>About</li>
         </ul>
         <span class="follow">Follow</span>
         <div class="row gallery">
@@ -76,13 +71,15 @@
           </div>
         </div>
       </div>
+
     </div>
   </main>
       {% endfor %}
 </div>
 
+{% block script %}
 
-</body>
-</html>
+{% endblock script %}
 
+{% endblock body %}
 
