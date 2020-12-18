@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'wtGallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',  # Your AWS DB name
+        'NAME': 'wtgallery',  # Your AWS DB name
         'USER': '',  # Your AWS Username
         'PASSWORD': '',  # Your AWS Password
-        'HOST': 'wtmaindatabase.cqlufp95wgpc.ap-south-1.rds.amazonaws.com',  # Your AWS Hostname
+        'HOST': '',  # Your AWS Hostname
         'PORT': '5432',
     }
 }
@@ -175,7 +175,7 @@ AWS_ACCESS_KEY_ID = ""
 AWS_SECRET_ACCESS_KEY = ""
 AWS_STORAGE_BUCKET_NAME = ""
 
-AWS_S3_CLOUDFRONT_DOMAIN = ''
+AWS_S3_CLOUDFRONT_DOMAIN = ""
 AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=86400',
 }

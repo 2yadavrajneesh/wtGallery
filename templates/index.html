@@ -118,13 +118,13 @@
           <h2>Popular Choice by users</h2>
           <p>Images</p>
         </div>
-        {% for portfolio in portfolios %}
+
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
           <div class="container" data-aos="fade-up">
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
+              {% for portfolio in portfolios %}
               <div class="col-lg-4 col-md-6 portfolio-item">
                 <img src="{{ portfolio.file.url }}" class="img-fluid" alt="{{ portfolio.title }}">
                 <div class="portfolio-info">
@@ -138,13 +138,13 @@
                   </a>
                 </div>
               </div>
-
+              {% endfor %}
             </div>
 
           </div>
         </section>
         <!-- End Portfolio Section -->
-        {% endfor %}
+
       </div>
 
     <!-- End Popular Courses Section -->

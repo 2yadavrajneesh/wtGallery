@@ -36,7 +36,7 @@ def index(request):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     us = User.objects.filter(username=user)
-    return render(request, 'dashboard.html', {'profile': us})
+    return render(request, 'profile.html', {'profile': us})
 
 
 def image(request):

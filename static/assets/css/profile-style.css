@@ -1,7 +1,9 @@
 html,body {
     background: #efefef;
 }
-
+a:link {
+  text-decoration: none;
+}
 .pheader {
   background: #eee;
   background-image: url("https://images.pexels.com/photos/1731427/pexels-photo-1731427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -36,7 +38,7 @@ main {
   .active {
     right: calc(50% - 60px);
     top: 50px;
-  } 
+  }
 }
 
 .name {
@@ -124,7 +126,7 @@ main {
   color: #888;
 }
 
-.nav li:hover, .nav li:nth-child(1)  { 
+.nav li:hover, .nav li:nth-child(1)  {
   color: #999;
   border-bottom: 2px solid #999;
 }
