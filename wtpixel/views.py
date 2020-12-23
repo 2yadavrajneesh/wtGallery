@@ -36,7 +36,10 @@ def index(request):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     us = User.objects.filter(username=user)
-    return render(request, 'profile.html', {'profile': us})
+    image = Image.objects.filter(user=user)
+    video = Video.objects.filter(user=user)
+    music = Music.objects.filter(user=user)
+    return render(request, 'profile.html', {'profile': us, 'image': image, 'video': video, 'music': music})
 
 
 def image(request):

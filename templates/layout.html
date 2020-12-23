@@ -62,7 +62,7 @@
         <ul>
           <li {% if request.path != '/video/' %} style="display: none;" {% endif %}><a href="{% url 'image' %}">Image</a></li>
           <li {% if request.path != '/' and request.path != '/image/' %} style="display: none;" {% endif %}><a href="{% url 'video' %}">Video</a></li>
-          <li class="drop-down" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' or request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#"><i class="ri-settings-3-line"></i></a>
+          <li class="drop-down" {% if request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#"><i class="ri-settings-3-line"></i></a>
             <ul>
               <li><a href="{% url 'image' %}">Image</a></li>
               <li><a href="{% url 'login' %}">Login</a></li>

@@ -26,7 +26,7 @@ SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
 DEBUG = True
 
 # ALLOWED_HOSTS = ['wtgallery.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['143.110.176.63', '127.0.0.1']
 
 # Application definition
 
@@ -89,8 +89,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'wtgallery',  # Your AWS DB name
-        'USER': '',  # Your AWS Username
-        'PASSWORD': '',  # Your AWS Password
+        'USER': 'yadavrajneesh',  # Your AWS Username
+        'PASSWORD': 'redhat123',  # Your AWS Password
         'HOST': '',  # Your AWS Hostname
         'PORT': '5432',
     }

@@ -8,47 +8,45 @@
 
 {% block body %}
   <main id="main" style="margin-top:78px;">
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
+
+    <!-- ======= Popular Courses Section ======= -->
+
+      <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <p>Recent Images</p>
-          <h2></h2>
+          <h2>Popular Choice by users</h2>
+          <p>Images</p>
         </div>
 
-        <div class="row portfolio-container">
-          {% for portfolio in portfolio %}
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+          <div class="container" data-aos="fade-up">
 
-          <div class="col-lg-4 col-md-6 portfolio-item">
-            <div class="portfolio-wrap">
-              <img src="{{ portfolio.file.url }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>{{ portfolio.title }}</h4>
-
-                <p style="font-size: 11px">Uploaded by {{portfolio.user}} </p>
-
-                <div class="portfolio-links" id="no-link">
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+              {% for portfolio in portfolios %}
+              <div class="col-lg-4 col-md-6 portfolio-item">
+                <img src="{{ portfolio.file.url }}" class="img-fluid" alt="{{ portfolio.title }}">
+                <div class="portfolio-info">
+                  <h4>{{ portfolio.title }}</h4>
+                  <p style="font-size: 11px">Uploaded by <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a></p>
                   <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
                     <i class="bx bx-show-alt"></i>
                   </a>
-                  <a download href="{{ portfolio.file.url }}" title="Download" target="_blank">
+                  <a href="{{ portfolio.file.url }}" class="details-link" title="Download" download>
                     <i class='bx bxs-download pl-2'></i>
                   </a>
-                  <a href="#" title="Hire Me">
-                    <button type="button" class="float- custom-button btn-danger btn-sm">Hire Me</button>
-                  </a>
-
                 </div>
               </div>
+              {% endfor %}
             </div>
+
           </div>
-          {% endfor %}
-        </div>
+        </section>
+        <!-- End Portfolio Section -->
 
       </div>
-    </section>
-    <!-- End Portfolio Section -->
+
+    <!-- End Popular Courses Section -->
 
   </main><!-- End #main -->
 

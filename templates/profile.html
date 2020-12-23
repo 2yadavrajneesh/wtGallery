@@ -46,30 +46,58 @@
         </div>
       </div>
       <div class="right col-lg-8">
-        <ul class="nav">
-          <li>Gallery</li>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Images</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Musics</a>
+          </li>
         </ul>
-        <form class="float-right mt-4">
+        <form class="float-right" style="margin-top:45px;">
           <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_GEOivZvzAxgEK1"></script>
         </form>
-        <div class="row gallery">
-          <div class="col-md-4">
-             <img src="https://images.pexels.com/photos/1036371/pexels-photo-1036371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+        <div class="tab-content mt-4" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <section id="portfolio" class="portfolio">
+              <div class="container" data-aos="fade-up">
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                  {% for portfolio in image %}
+                  <div class="col-lg-4 col-md-6 portfolio-item">
+                    <img src="{{ portfolio.file.url }}" class="img-fluid" alt="{{ portfolio.title }}">
+                    <div class="portfolio-info">
+                      <h4 style="font-size:13px;">{{ portfolio.title }}</h4>
+                      <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
+                        <i class="bx bx-show-alt"></i>
+                      </a>
+                      <a href="{{ portfolio.file.url }}" class="details-link" title="Download" download>
+                        <i class='bx bxs-download pl-2'></i>
+                      </a>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+              </div>
+            </section>
           </div>
-          <div class="col-md-4">
-            <img src="https://images.pexels.com/photos/861034/pexels-photo-861034.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row gallery">
+              {% for portfolio in video %}
+              <div class="col-lg-6 col-md-6 portfolio-item">
+                <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto" width="300" height="200" data-setup="{}">
+                  <source src="{{ portfolio.file.url }}" type="video/mp4">
+                </video>
+              </div>
+              {% endfor %}
+            </div>
           </div>
-          <div class="col-md-4">
-             <img src="https://images.pexels.com/photos/113338/pexels-photo-113338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-          </div>
-          <div class="col-md-4">
-             <img src="https://images.pexels.com/photos/5049/forest-trees-fog-foggy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://images.pexels.com/photos/428431/pexels-photo-428431.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://images.pexels.com/photos/50859/pexels-photo-50859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            Music
           </div>
         </div>
       </div>
