@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{% block title %} {% endblock %} | wtGallery</title>
+  <title>{% block title %} {% endblock %} | Open Creators </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -53,10 +53,10 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="{% url 'index' %}">wt<span style="">Gallery</span></a></h1>
+      <h1 class="logo mr-auto"><a href="{% url 'index' %}">&#9737pen <span style="background-color:white">&#169reators</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      <a href="{% url 'upload' %}" class="get-started-btn" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' %} style="display: none;" {% endif %}>Upload</a>
+<!--      <a href="{% url 'index' %}" class="logo mr-auto"><img src="{% static 'logo.png' %}" alt="" class="img-fluid"></a>-->
+      <a href="{% url 'upload' %}" class="get-started-btn" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' and request.path != '/music/' %} style="display: none;" {% endif %}>Upload</a>
       <a href="#" class="get-started-btn" {% if request.path != '/upload/' %} style="display: none;" {% endif %}>About Us</a>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -65,6 +65,7 @@
           <li class="drop-down" {% if request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#"><i class="ri-settings-3-line"></i></a>
             <ul>
               <li><a href="{% url 'image' %}">Image</a></li>
+              <li><a href="{% url 'music' %}">Music</a></li>
               <li><a href="{% url 'login' %}">Login</a></li>
               <li><a href="{% url 'register' %}">Sign In</a></li>
             </ul>
@@ -74,6 +75,7 @@
               <ul>
                 <li class="pt-2" style="padding-left:20px;"><span style="">{{request.user.first_name}} {{request.user.last_name}}</span></li>
                 <li><a href="{% url 'image' %}">Image</a></li>
+                <li><a href="{% url 'music' %}">Music</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               </ul>
             </li>
@@ -101,13 +103,13 @@
         <div class="row">
 
           <div class="col-lg-6 col-md-6 footer-contact">
-            <h3>WTGALLERY</h3>
+            <h3>OPEN CREATORS</h3>
             <p>
               Dolpin Connects, Near Ramamurthy Nagar Signal, <br>
               Bengaluru, 560043<br>
               India <br><br>
               <strong>Phone:</strong> +91 9535594891<br>
-              <strong>Email:</strong> info@wittymindstech.com<br>
+              <strong>Email:</strong> <a href="mailto:info@wittymindstech.com">info@wittymindstech.com</a><br>
             </p>
           </div>
 
@@ -138,18 +140,18 @@
 
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy; Copyright <strong><span>wtGallery</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Open Creators</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          Designed by <a href="">WittyMinds Technology</a>
+          Designed by <a href="https://wittymindstech.com/">WittyMinds Technology</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.twitter.com/wittymindstech1" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.youtube.com/c/wittymindstechnologies" class="facebook"><i class="bx bxl-youtube"></i></a>
+        <a href="https://www.instagram.com/wittymindstech/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://github.com/wittymindstech" class="google-plus"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/wittymindstech/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer>

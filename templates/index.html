@@ -46,19 +46,13 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>You,<br> Matter</h1>
+      <h1>Only Your,<br> Creativity Matter</h1>
       <h2>The best free stock photos shared by Gifted Creators.</h2>
       <form action="{% url 'search' %}" method="get">
           <div class="row">
             <div class="col-md-12 mt-5">
               <div class="input-group">
                 <input class="form-control p-4 border rounded-pill-left border-right-0" name="q" type="search" placeholder="Find the free stock photos and video..." id="example-search-input">
-                <div class="input-group-prepend">
-                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Image</button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" name="v">Video</a>
-                    </div>
-                </div>
                 <span class="input-group-append">
                   <button class="btn btn-outline-secondary border rounded-pill-right border-left-0 pl-5 pr-5" type="button">
                       <i class="bx bx-search-alt bx-spin" style="color:	white"></i>
@@ -130,12 +124,27 @@
                 <div class="portfolio-info">
                   <h4>{{ portfolio.title }}</h4>
                   <p style="font-size: 11px">Uploaded by <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a></p>
-                  <a href="{{ portfolio.file.url }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
+                  <a href="{{ portfolio.file.url }}" onclick="views({{portfolio.id}})" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
                     <i class="bx bx-show-alt"></i>
                   </a>
-                  <a href="{{ portfolio.file.url }}" class="details-link" title="Download" download>
+                  <a href="{{ portfolio.file.url }}" onclick="dow({{portfolio.id}})" class="details-link" title="Download" download>
                     <i class='bx bxs-download pl-2'></i>
                   </a>
+                  <div style="font-size: 11px">
+                    {% if user.is_authenticated %}
+                      {% if user.username in portfolio.likes %}
+                        <button type="submit" onclick="like({{portfolio.id}});" name="post_id" id="ul{{portfolio.id}}" value="{{portfolio.id}}" class="btn btn-primary btn-sm">Unlike</button>
+                      {% else %}
+                        <button type="submit" onclick="like({{portfolio.id}});" name="post_id" id="l{{portfolio.id}}" value="{{portfolio.id}}" class="btn btn-primary btn-sm">Like</button>
+                      {% endif %}
+                    {% else %}
+                      <a class="btn btn-outline-info" href="{% url 'login' %}">Log in to like this article</a><br>
+                    {% endif %}
+                      <strong class="text-secondary" ><i class='bx bxs-like pl-2'></i> <span id="total_likes{{portfolio.id}}">{{portfolio.number_of_liked}}</span></strong>
+                    &nbsp &nbsp
+                    <span  id="views{{portfolio.id}}">Views: {{portfolio.views}}</span>
+                    <span id="dow{{portfolio.id}}">Downloads: {{portfolio.total_downloads}}</span>
+                  </div>
                 </div>
               </div>
               {% endfor %}
@@ -153,7 +162,63 @@
   <!-- End #main -->
 
 {% block script %}
+<script>
+function like(id){
 
+var v=id.toString();
+console.log("like button");
+v=parseInt(v);
+console.log(v);
+$.ajax({
+url:"{% url 'imagelikes' %}",
+method:"POST",
+data:{'id':v},
+success:function(data){
+document.getElementById("total_likes"+v).innerHTML=data['total_likes'];
+if(data['liked']){
+console.log(data['liked']);
+console.log("l"+data['id']);
+document.getElementById("l"+data['id']).innerHTML="Unlike";
+
+}
+else{
+console.log(data['liked'])
+console.log("ul"+data['id']);
+document.getElementById("l"+data['id']).innerHTML="Like";
+}
+console.log("success");
+},
+});
+}
+
+function views(id){
+console.log("views clicked");
+var idstr=id;
+if(localStorage.getItem('images')==undefined)
+var images={};
+else{
+var images=localStorage.getItem('images');
+images=JSON.parse(images);}
+console.log(images);
+console.log(idstr);
+if(images['id'+idstr]==undefined){
+$.ajax({
+url:"{% url 'saveviews' %}",
+method:"GET",
+data:{'obj':idstr ,},
+dataType:'json',
+success:function(data){
+document.getElementById("views"+idstr).innerHTML=data['status'];
+images['id'+idstr]=idstr;
+console.log("success");
+localStorage.setItem('images',JSON.stringify(images));
+console.log(data);
+},
+}
+);}
+
+};
+</script>
 {% endblock script %}
 
 {% endblock body %}

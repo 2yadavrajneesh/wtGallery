@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Music's {% endblock %}
+{% block style %}
+<style>
+</style>
+{% endblock %}
+
+{% block body %}
+  <main id="main" style="margin-top:78px;">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <p>Recent Music's</p>
+          <h2></h2>
+        </div>
+
+        <div class="row portfolio-container">
+          {% for portfolio in portfolio %}
+
+          <div class="col-lg-4 col-md-6 portfolio-item">
+              <audio id="{{portfolio.id}}" onplay="views({{portfolio.id}});"  style="margin-top:10px;margin-bottom:10px"   controls   download>
+                 <source  src="{{ portfolio.file.url }}"  name="{{portfolio.file.name}}" type="audio/mp3" download="{{portfolio.file.name}}">
+              </audio>
+              <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 10px;">
+                <p class="float-left">
+                  <span class="font-weight-bold">Uploaded by:</span> <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a>
+                  <span class="font-weight-bold">&nbsp Title: {{portfolio.title}}</span>
+                  <span class="font-weight-bold">&nbsp Views: {{portfolio.views}}</span>
+                </p>
+              </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% endblock script %}
+
+{% endblock body %}

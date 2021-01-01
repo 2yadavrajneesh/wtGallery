@@ -21,7 +21,7 @@
           {% for portfolio in portfolio %}
 
           <div class="col-lg-4 col-md-6 portfolio-item">
-              <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto" width="360" height="264" data-setup="{}">
+              <video id="my-video" onclick="videoviews({{portfolio.id}})" class="video-js vjs-theme-forest" controls preload="auto" width="360" height="264" data-setup="{}">
                 <source src="{{ portfolio.file.url }}" type="video/mp4">
               </video>
               <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 10px;">
@@ -29,7 +29,7 @@
                   <span class="font-weight-bold">Uploaded by:</span> <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a>
                 </p>
                 <p class="float-right">
-                  <span class="font-weight-bold">Views:</span> 2
+                  <span class="font-weight-bold" id="views{{portfolio.id}}">Views: {{portfolio.views}}</span>
                 </p>
               </div>
           </div>
@@ -43,7 +43,39 @@
   </main><!-- End #main -->
 
 {% block script %}
+<script>
+console.log(document.getElementById("1").duration);
 
+  function videoviews(id){
+
+  console.log("inside views");
+  var idstr=id.toString();
+console.log(localStorage.getItem('video'));
+if(localStorage.getItem('video')==undefined)
+var video={};
+else{
+var video=localStorage.getItem('video');
+video=JSON.parse(video);}
+console.log(video);
+console.log(video);
+if(video['id'+idstr]==undefined){
+$.ajax({
+url:"{% url 'save_video_views' %}",
+method:"GET",
+data:{'obj':idstr ,},
+dataType:'json',
+success:function(data){
+document.getElementById("views"+idstr).innerHTML=data['status'];
+
+video['id'+idstr]=idstr;
+console.log("success");
+localStorage.setItem('video',JSON.stringify(video));
+
+},
+}
+);}
+  }
+</script>
 {% endblock script %}
 
 {% endblock body %}

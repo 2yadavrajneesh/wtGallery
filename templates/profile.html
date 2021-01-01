@@ -97,7 +97,19 @@
             </div>
           </div>
           <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            Music
+            {% for portfolio in music %}
+            <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 10px;">
+                <p class="float-left">
+                  <span class="font-weight-bold">&nbsp Title: {{portfolio.title}}</span>
+                </p>
+            </div>
+              <div class="col-lg-6 col-md-6 portfolio-item">
+                <audio id="{{portfolio.id}}" onplay="views({{portfolio.id}});"  style="margin-top:10px;margin-bottom:10px"   controls   download>
+                  <source  src="{{ portfolio.file.url }}"  name="{{portfolio.file.name}}" type="audio/mp3" download="{{portfolio.file.name}}">
+                </audio>
+              </div>
+
+            {% endfor %}
           </div>
         </div>
       </div>

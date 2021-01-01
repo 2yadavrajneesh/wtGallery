@@ -4,13 +4,14 @@ import json
 import os
 from django import template
 from django.contrib.auth.models import User
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 from wtpixel.forms import ImageForm, SignUpForm, LoginForm, VideoForm, MusicForm
@@ -61,6 +62,91 @@ def music(request):
     return render(request, "music.html", context)
 
 
+def save_views(req):
+    if req.method == "GET":
+        pk = req.GET.get("obj")
+        obj = Image.objects.get(pk=pk)
+        obj.views += 1
+        obj.save()
+
+        print("inside save view")
+
+        return JsonResponse({'status': obj.views})
+    pass
+
+
+def save_video_views(req):
+    if req.method == 'GET':
+        pk = req.GET.get("obj")
+        obj = Video.objects.get(pk=pk)
+        obj.views += 1
+        obj.save()
+
+        print("inside save view")
+
+        return JsonResponse({'status': obj.views})
+    pass
+
+
+def music_views(req):
+    if req.method == 'GET':
+        pk = req.GET.get("obj")
+        obj = Music.objects.get(pk=pk)
+        obj.views += 1
+        obj.save()
+
+    print("inside save view")
+
+    return JsonResponse({'status': obj.views})
+    pass
+
+
+@csrf_exempt
+def count_likes(req):
+    if req.method == 'POST':
+        print("inside")
+        post = get_object_or_404(Image, id=req.POST.get("id"))
+        print(req.POST.get("id"))
+
+        liked = False
+        if post.likes.filter(id=req.user.id).exists():
+            post.likes.remove(req.user)
+
+        else:
+            liked = True
+            post.likes.add(req.user)
+
+        total_likes = post.number_of_liked;
+        print(total_likes)
+        print("end view")
+        print(req.user)
+        return JsonResponse({'liked': liked, 'total_likes': total_likes, 'id': str(req.POST.get("id"))})
+    pass
+
+
+def save_music_view(req):
+    if req.method == 'GET':
+        pk = req.GET.get("obj")
+        obj = Music.objects.get(pk=pk)
+        obj.views += 1
+        obj.save()
+        print('inside music views')
+        return JsonResponse({'status': obj.views})
+    pass
+
+
+def count_downloads(req):
+    if req.method == "GET":
+        pk = req.GET.get("obj")
+        obj = Image.objects.get(pk=pk)
+        obj.total_downloads += 1
+        obj.save()
+
+        print("inside save view")
+
+    return JsonResponse({'status': obj.total_downloads})
+
+
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -104,11 +190,8 @@ def upload(request):
         video = VideoForm(request.POST, request.FILES)
         music = MusicForm(request.POST, request.FILES)
 
-        # Split the extension from the path and normalise it to lowercase.
         ext = os.path.splitext(str(request.FILES['file']))[-1].lower()
         print(ext)
-
-        # Now we can simply use == to check for equality, no need for wildcards.
 
         if ext == ".mp4":
             print("mp4 file!")
@@ -118,7 +201,7 @@ def upload(request):
                 fs = video.save(commit=False)
                 fs.user = request.user
                 fs.save()
-                messages.success(request, 'Video inserted successfully.')
+                messages.success(request, 'Video successfully Uploaded.')
 
                 return redirect('upload')
 
@@ -130,7 +213,7 @@ def upload(request):
                 fs = video.save(commit=False)
                 fs.user = request.user
                 fs.save()
-                messages.success(request, 'Video inserted successfully.')
+                messages.success(request, 'Video successfully Uploaded.')
 
                 return redirect('upload')
 
@@ -142,7 +225,7 @@ def upload(request):
                 fs = music.save(commit=False)
                 fs.user = request.user
                 fs.save()
-                messages.success(request, 'Music inserted successfully.')
+                messages.success(request, 'Music Successfully Uploaded.')
 
                 return redirect('upload')
 
@@ -157,13 +240,13 @@ def upload(request):
                 fs = image.save(commit=False)
                 fs.user = request.user
                 fs.save()
-                messages.success(request, 'Image inserted successfully.')
+                messages.success(request, 'Image Successfully Uploaded.')
 
                 return redirect('upload')
 
         else:
             print("Unknown file format.")
-            messages.warning(request, 'Unknown file format !!')
+            messages.warning(request, 'Unknown File Format !!')
 
         # if image.is_valid() or video.is_valid:
         #
