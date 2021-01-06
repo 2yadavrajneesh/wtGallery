@@ -7,6 +7,7 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('dashb/', views.dashb, name='dashb'),
     # path('', views.IndexView.as_view(), name='index'),
     path('profile/<str:username>', views.profile, name='profile'),
     path('upload/', views.upload, name='upload'),
@@ -17,7 +18,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     path('register/', views.register, name='register'),
     path('search/', views.SearchResultsView.as_view(), name='search'),
-    re_path(r'^.*\.html', views.pages, name='pages'),
+
+    # Viram Changes
 
     path('musicviews/', views.save_music_view, name='musicviews'),
     path('countdownloads/', views.count_downloads, name='countdownloads'),

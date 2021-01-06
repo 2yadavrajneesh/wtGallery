@@ -154,7 +154,7 @@ LOGOUT_REDIRECT_URL = '/'
 # AWS_LOCATION = 'static'
 # AWS_ACCESS_KEY_ID = ''  # Your AWS Access Key ID
 # AWS_SECRET_ACCESS_KEY = ''  # Your AWS Secret Access Key
-# AWS_STORAGE_BUCKET_NAME = ''  # Your AWS Bucket name
+# AWS_STORAGE_BUCKET_NAME = 'wtgallerymain'  # Your AWS Bucket name
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # AWS_S3_OBJECT_PARAMETERS = {
 #     'CacheControl': 'max-age=86400',
@@ -173,7 +173,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 AWS_ACCESS_KEY_ID = ""
 AWS_SECRET_ACCESS_KEY = ""
-AWS_STORAGE_BUCKET_NAME = ""
+AWS_STORAGE_BUCKET_NAME = "wtgallerymain"
 
 AWS_S3_CLOUDFRONT_DOMAIN = ""
 AWS_S3_OBJECT_PARAMETERS = {

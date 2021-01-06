@@ -1,19 +1,14 @@
 # Create your views here.
 
-import json
 import os
-from django import template
 from django.contrib.auth.models import User
-from django.http import HttpResponse, Http404, JsonResponse
+from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template import loader
-from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, DetailView
-from django.views.generic.base import View
+from django.views.generic import ListView
 from wtpixel.forms import ImageForm, SignUpForm, LoginForm, VideoForm, MusicForm
 from django.contrib import messages
 from wtpixel.models import Image, Video, Music
@@ -26,12 +21,47 @@ def index(request):
     return render(request, "index.html", context)
 
 
-# class IndexView(ListView):
-#     model = Image
-#     paginate_by = 10
-#     context_object_name = 'portfolios'
-#     template_name = 'index.html'
-#     ordering = ['title']
+def dashb(request):
+    return render(request, "dashb/index.html")
+
+
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, "register.html", {'form': form})
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    msg = None
+    if request.method == "POST":
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                if request.user.is_superuser:
+                    return redirect('/dashb')
+                return redirect("/")
+
+            else:
+                msg = "Username or Password Doesn't match"
+
+        else:
+            msg = 'Error validating the form'
+    return render(request, "login.html", {"form": form, "msg": msg})
 
 
 def profile(request, username):
@@ -147,42 +177,6 @@ def count_downloads(req):
     return JsonResponse({'status': obj.total_downloads})
 
 
-def register(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('login')
-    else:
-        form = SignUpForm()
-    return render(request, "register.html", {'form': form})
-
-
-def login_view(request):
-    form = LoginForm(request.POST or None)
-    msg = None
-    if request.method == "POST":
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password1")
-
-            user = authenticate(username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect("/")
-            else:
-                msg = "Username or Password Doesn't match"
-
-        else:
-            msg = 'Error validating the form'
-    return render(request, "login.html", {"form": form, "msg": msg})
-
-
 @login_required(login_url="/login/")
 def upload(request):
     if request.method == 'POST':
@@ -277,18 +271,4 @@ class SearchResultsView(ListView):
         return object_list
 
 
-@login_required(login_url="/login/")
-def pages(request):
-    context = {}
-    try:
-        load_template = request.path.split('/')[-1]
-        html_template = loader.get_template(load_template)
-        return HttpResponse(html_template.render(context, request))
 
-    except template.TemplateDoesNotExist:
-        html_template = loader.get_template('error-404.html')
-        return HttpResponse(html_template.render(context, request))
-
-    except:
-        html_template = loader.get_template('error-500.html')
-        return HttpResponse(html_template.render(context, request))
