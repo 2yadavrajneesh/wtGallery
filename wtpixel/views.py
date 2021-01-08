@@ -21,8 +21,17 @@ def index(request):
     return render(request, "index.html", context)
 
 
+@login_required(login_url="/login/")
 def dashb(request):
-    return render(request, "dashb/index.html")
+    if request.method == 'POST':
+        pic_id = int(request.POST.get("pic_id"))
+        status = str(request.POST.get("status"))
+        sts = Image.objects.get(id=pic_id)
+        sts.status = status
+        sts.save()
+    portfolio = Image.objects.all()
+    context = {"portfolios": portfolio}
+    return render(request, "dashb/index.html", context)
 
 
 def register(request):
@@ -269,6 +278,3 @@ class SearchResultsView(ListView):
         object_list = Image.objects.filter(Q(title__icontains=query) | Q(file__icontains=query))
         print(object_list)
         return object_list
-
-
-

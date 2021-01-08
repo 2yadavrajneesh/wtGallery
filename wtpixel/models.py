@@ -11,6 +11,7 @@ class Image(models.Model):
     views = models.IntegerField(default=0)
     total_downloads = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, default=None, blank=True)
+    status = models.CharField(max_length=20, default='Pending')
 
     def __str__(self):
         return self.title

@@ -20,9 +20,21 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'dashb/css/dashb.min.css' %}" rel="stylesheet">
 
+    <!-- Vendor CSS Files -->
+
+    <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
     <!-- Custom styles for this page -->
     <link href="{% static 'dashb/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    {% block style %}
 
+    {% endblock %}
 </head>
 
 <body id="page-top">
@@ -229,6 +241,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'dashb/js/dashb.min.js' %}"></script>
+    <script src="{% static 'dashb/js/dashb.js' %}"></script>
 
     <!-- Page level plugins -->
     <script src="{% static 'dashb/vendor/chart.js/Chart.min.js' %}"></script>
@@ -244,6 +257,12 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'dashb/js/demo/datatables-demo.js' %}"></script>
 
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
 </body>
 
 </html>
