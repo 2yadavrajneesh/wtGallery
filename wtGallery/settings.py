@@ -26,7 +26,7 @@ SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
 DEBUG = True
 
 # ALLOWED_HOSTS = ['wtgallery.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = ['143.110.176.63', '127.0.0.1']
+ALLOWED_HOSTS = ['143.110.176.63', '127.0.0.1', 'pixzium.com', 'www.pixzium.com']
 
 # Application definition
 
@@ -88,8 +88,8 @@ WSGI_APPLICATION = 'wtGallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wtgallery',  # Your AWS DB name
-        'USER': 'yadavrajneesh',  # Your AWS Username
+        'NAME': 'wtgallerydb',  # Your AWS DB name
+        'USER': 'wtgalleryadmin',  # Your AWS Username
         'PASSWORD': 'redhat123',  # Your AWS Password
         'HOST': '',  # Your AWS Hostname
         'PORT': '5432',
@@ -151,44 +151,44 @@ LOGOUT_REDIRECT_URL = '/'
 
 # AWS Settings
 
-# AWS_LOCATION = 'static'
-# AWS_ACCESS_KEY_ID = ''  # Your AWS Access Key ID
-# AWS_SECRET_ACCESS_KEY = ''  # Your AWS Secret Access Key
-# AWS_STORAGE_BUCKET_NAME = 'wtgallerymain'  # Your AWS Bucket name
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
-# DEFAULT_FILE_STORAGE = 'wtGallery.storage_backends.MediaStorage'
-# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-# )
-# AWS_DEFAULT_ACL = None
-
-AWS_ACCESS_KEY_ID = ""
-AWS_SECRET_ACCESS_KEY = ""
-AWS_STORAGE_BUCKET_NAME = "wtgallerymain"
-
-AWS_S3_CLOUDFRONT_DOMAIN = ""
+AWS_LOCATION = 'static'
+AWS_ACCESS_KEY_ID = ''  # Your AWS Access Key ID
+AWS_SECRET_ACCESS_KEY = ''  # Your AWS Secret Access Key
+AWS_STORAGE_BUCKET_NAME = 'mainwtgallery'  # Your AWS Bucket name
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
-     'CacheControl': 'max-age=86400',
+    'CacheControl': 'max-age=86400',
 }
-
-STATICFILES_LOCATION = 'static'
-STATIC_ROOT = '/%s/' % STATICFILES_LOCATION
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, STATICFILES_LOCATION)
-STATICFILES_STORAGE = 'wtGallery.storage_backends.StaticStorage'
-
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, MEDIAFILES_LOCATION)
 DEFAULT_FILE_STORAGE = 'wtGallery.storage_backends.MediaStorage'
-
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 AWS_DEFAULT_ACL = None
+
+# AWS_ACCESS_KEY_ID = ""
+# AWS_SECRET_ACCESS_KEY = ""
+# AWS_STORAGE_BUCKET_NAME = ""
+#
+# AWS_S3_CLOUDFRONT_DOMAIN = "dfulqa2btyggx.cloudfront.net"
+# AWS_S3_OBJECT_PARAMETERS = {
+#      'CacheControl': 'max-age=86400',
+# }
+#
+# STATICFILES_LOCATION = 'static'
+# STATIC_ROOT = '/%s/' % STATICFILES_LOCATION
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, STATICFILES_LOCATION)
+# STATICFILES_STORAGE = 'wtGallery.storage_backends.StaticStorage'
+#
+# MEDIAFILES_LOCATION = 'media'
+# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, MEDIAFILES_LOCATION)
+# DEFAULT_FILE_STORAGE = 'wtGallery.storage_backends.MediaStorage'
+#
+# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+# STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+# AWS_DEFAULT_ACL = None
