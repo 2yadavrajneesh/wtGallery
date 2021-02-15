@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'wtgallerydb',  # Your AWS DB name
         'USER': 'wtgalleryadmin',  # Your AWS Username
         'PASSWORD': 'redhat123',  # Your AWS Password
-        'HOST': 'wtgallerymain.cssgwjlhiewv.ap-south-1.rds.amazonaws.com',  # Your AWS Hostname
+        'HOST': '',  # Your AWS Hostname
         'PORT': '5432',
     }
 }
@@ -152,8 +152,8 @@ LOGOUT_REDIRECT_URL = '/'
 # AWS Settings
 
 AWS_LOCATION = 'static'
-AWS_ACCESS_KEY_ID = 'AKIA2QMUNTD5AWTLFVHU'  # Your AWS Access Key ID
-AWS_SECRET_ACCESS_KEY = 'wdwR7QR3j1flRiN2FlvqonweRnaLJ9fN8Hjj4CJu'  # Your AWS Secret Access Key
+AWS_ACCESS_KEY_ID = ''  # Your AWS Access Key ID
+AWS_SECRET_ACCESS_KEY = ''  # Your AWS Secret Access Key
 AWS_STORAGE_BUCKET_NAME = 'mainwtgallery'  # Your AWS Bucket name
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
