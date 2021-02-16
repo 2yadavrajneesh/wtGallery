@@ -25,8 +25,7 @@ SECRET_KEY = ')27e+ut04i=9&wp4!cq73n6ao^2l(xbussag07(l!=e$355vp-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['wtgallery.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = ['143.110.176.63', '127.0.0.1', 'pixzium.com', 'www.pixzium.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'pixzium.com', 'www.pixzium.com']
 
 # Application definition
 
@@ -175,8 +174,8 @@ AWS_ACCESS_KEY_ID = ""
 AWS_SECRET_ACCESS_KEY = ""
 AWS_STORAGE_BUCKET_NAME = "mainwtgallery"
 
-AWS_S3_CLOUDFRONT_DOMAIN_MEDIA = ""
-AWS_S3_CLOUDFRONT_DOMAIN_STATIC = ""
+AWS_S3_CLOUDFRONT_DOMAIN_MEDIA = "d2g0zd6flkd76r.cloudfront.net"
+AWS_S3_CLOUDFRONT_DOMAIN_STATIC = "d2usq1dexjp4d9.cloudfront.net"
 AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=86400',
 }
