@@ -2,7 +2,7 @@
 
 import os
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -278,3 +278,10 @@ class SearchResultsView(ListView):
         object_list = Image.objects.filter(Q(title__icontains=query) | Q(file__icontains=query))
         print(object_list)
         return object_list
+
+
+def read_file(request):
+    f = open('.well-known/pki-validation/15782C901DF587AE2A25B2170549D1D0.txt', 'r')
+    file_content = f.read()
+    f.close()
+    return HttpResponse(file_content, content_type="text/plain")

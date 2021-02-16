@@ -5,6 +5,8 @@ from . import views
 from django.conf import settings
 from django.contrib.auth.views import LogoutView
 
+from .views import read_file
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('dashb/', views.dashb, name='dashb'),
@@ -18,6 +20,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     path('register/', views.register, name='register'),
     path('search/', views.SearchResultsView.as_view(), name='search'),
+    path('.well-known/pki-validation/15782C901DF587AE2A25B2170549D1D0.txt', read_file),
 
     # Viram Changes
 
