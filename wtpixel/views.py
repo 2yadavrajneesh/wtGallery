@@ -21,6 +21,10 @@ def index(request):
     return render(request, "index.html", context)
 
 
+def sitemap(request):
+    return render(request, "sitemap.xml")
+
+
 @login_required(login_url="/login/")
 def dashb(request):
     if request.method == 'POST':

@@ -1,6 +1,11 @@
+from django.contrib import sitemaps
 from django.contrib.auth import views as auth
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from django.http import HttpResponse
 from django.urls import path, re_path
+from django.views.generic import TemplateView
+
 from . import views
 from django.conf import settings
 from django.contrib.auth.views import LogoutView
@@ -20,8 +25,9 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     path('register/', views.register, name='register'),
     path('search/', views.SearchResultsView.as_view(), name='search'),
-    path('.well-known/pki-validation/15782C901DF587AE2A25B2170549D1D0.txt', read_file),
-
+    # path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path("sitemap.xml", TemplateView.as_view(template_name="sitemap.xml", content_type="text/plain")),
     # Viram Changes
 
     path('musicviews/', views.save_music_view, name='musicviews'),
