@@ -53,9 +53,9 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="{% url 'index' %}">Pix<span style="background-color:white">zium</span></a></h1>
+<!--      <h1 class="logo mr-auto"><a href="{% url 'index' %}">Pix<span style="background-color:white">zium</span></a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
-<!--      <a href="{% url 'index' %}" class="logo mr-auto"><img src="{% static 'logo.png' %}" alt="" class="img-fluid"></a>-->
+       <a href="{% url 'index' %}" class="logo mr-auto"><img src="{% static 'logo (2).png' %}" alt="" class="w-75 img-fluid"></a>
       <a href="{% url 'upload' %}" class="get-started-btn" {% if request.path != '/' and request.path != '/video/' and request.path != '/image/' and request.path != '/music/' %} style="display: none;" {% endif %}>Upload</a>
       <a href="#" class="get-started-btn" {% if request.path != '/upload/' %} style="display: none;" {% endif %}>About Us</a>
       <nav class="nav-menu d-none d-lg-block">

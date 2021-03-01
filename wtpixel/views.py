@@ -16,7 +16,7 @@ import nude
 
 
 def index(request):
-    portfolio = Image.objects.all()
+    portfolio = Image.objects.all().order_by('-uploaded_at')
     context = {"portfolios": portfolio}
     return render(request, "index.html", context)
 
