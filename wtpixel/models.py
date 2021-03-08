@@ -8,6 +8,7 @@ class Image(models.Model):
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='images', blank=False)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    tag = models.CharField(max_length=255, blank=False, default='Images')
     views = models.IntegerField(default=0)
     total_downloads = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, default=None, blank=True)

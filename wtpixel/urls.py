@@ -38,5 +38,5 @@ urlpatterns = [
     path('save_music_views/', views.save_music_view, name='save_music_views'),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

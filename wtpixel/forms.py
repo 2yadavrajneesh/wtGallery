@@ -45,7 +45,7 @@ class SignUpForm(UserCreationForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('title', 'file')
+        fields = ('title', 'file', 'tag')
 
         def save(self):
             image = super(ImageForm, self).save()

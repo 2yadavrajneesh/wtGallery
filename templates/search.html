@@ -24,20 +24,7 @@
               <div class="portfolio-info">
                 <h4>{{ search.title }}</h4>
 
-                <p style="font-size: 11px">Uploaded by {{search.user}} </p>
-
-                <div class="portfolio-links" id="no-link">
-                  <a href="{{ search.file.url }}" data-gall="portfolioGallery" class="venobox" title="View Image">
-                    <i class="bx bx-show-alt"></i>
-                  </a>
-                  <a download href="{{ search.file.url }}" title="Download" target="_blank">
-                    <i class='bx bxs-download pl-2'></i>
-                  </a>
-                  <a href="#" title="Hire Me">
-                    <button type="button" class="float- custom-button btn-danger btn-sm">Hire Me</button>
-                  </a>
-
-                </div>
+                <p style="font-size: 11px">Uploaded by <a href="{% url 'profile' username=search.user.username %}">{{search.user}} </a></p>
               </div>
             </div>
           </div>
