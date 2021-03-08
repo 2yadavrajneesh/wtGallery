@@ -26,6 +26,7 @@ class Video(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='videos', blank=False)
+    tag = models.CharField(max_length=255, blank=False, default='Video')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
 
@@ -37,6 +38,7 @@ class Music(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='musics', blank=False)
+    tag = models.CharField(max_length=255, blank=False, default='Music')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
 
