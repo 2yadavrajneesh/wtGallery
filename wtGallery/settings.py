@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'wtgallerydb',  # Your AWS DB name
         'USER': 'wtgalleryadmin',  # Your AWS Username
         'PASSWORD': 'redhat123',  # Your AWS Password
-        'HOST': 'wtgallerymain.cssgwjlhiewv.ap-south-1.rds.amazonaws.com',  # Your AWS Hostname
+        'HOST': 'wtgallerymain..ap-south-1.rds.amazonaws.com',  # Your AWS Hostname
         'PORT': '5432',
     }
 }
@@ -149,8 +149,8 @@ LOGOUT_REDIRECT_URL = '/'
 # AWS Settings
 
 AWS_LOCATION = 'static'
-AWS_ACCESS_KEY_ID = 'AKIA2QMUNTD5AWTLFVHU'  # Your AWS Access Key ID
-AWS_SECRET_ACCESS_KEY = 'wdwR7QR3j1flRiN2FlvqonweRnaLJ9fN8Hjj4CJu'  # Your AWS Secret Access Key
+AWS_ACCESS_KEY_ID = ''  # Your AWS Access Key ID
+AWS_SECRET_ACCESS_KEY = ''  # Your AWS Secret Access Key
 AWS_STORAGE_BUCKET_NAME = 'mainwtgallery'  # Your AWS Bucket name
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
@@ -168,12 +168,12 @@ STATICFILES_FINDERS = (
 )
 AWS_DEFAULT_ACL = None
 
-# AWS_ACCESS_KEY_ID = "AKIA2QMUNTD5AWTLFVHU"
-# AWS_SECRET_ACCESS_KEY = "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"
+# AWS_ACCESS_KEY_ID = ""
+# AWS_SECRET_ACCESS_KEY = ""
 # AWS_STORAGE_BUCKET_NAME = "mainwtgallery"
 #
-# AWS_S3_CLOUDFRONT_DOMAIN_MEDIA = "d2g0zd6flkd76r.cloudfront.net"
-# AWS_S3_CLOUDFRONT_DOMAIN_STATIC = "d2usq1dexjp4d9.cloudfront.net"
+# AWS_S3_CLOUDFRONT_DOMAIN_MEDIA = ".cloudfront.net"
+# AWS_S3_CLOUDFRONT_DOMAIN_STATIC = ".cloudfront.net"
 # AWS_S3_OBJECT_PARAMETERS = {
 #      'CacheControl': 'max-age=86400',
 # }
