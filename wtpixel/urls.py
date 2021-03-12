@@ -19,6 +19,7 @@ urlpatterns = [
     path('profile/<str:username>', views.profile, name='profile'),
     path('upload/', views.upload, name='upload'),
     path('video/', views.video, name='video'),
+    path('my_account/', views.my_account, name='my_account'),
     path('image/', views.image, name='image'),
     path('music/', views.music, name='music'),
     path('login/', views.login_view, name='login'),
@@ -38,5 +39,5 @@ urlpatterns = [
     path('save_music_views/', views.save_music_view, name='save_music_views'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

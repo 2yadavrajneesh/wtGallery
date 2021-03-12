@@ -1,0 +1,140 @@
+/*----------------------------------------*/
+/*  23. Footer CSS
+/*----------------------------------------*/
+
+/*-- Footer Widget --*/
+.footer-widget {
+    & .footer-logo{
+        margin-bottom: 30px;
+        & a{
+            display: block;
+            & img{
+                width: 107px;
+            }
+        }
+    }
+    // Title
+    & .title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
+        white-space: nowrap;
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        // Responsive
+        @media #{$tablet-device}{
+            margin-bottom: 15px;
+        }
+        @media #{$large-mobile}{
+            margin-bottom: 15px;
+        }
+    }
+    & h2{
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 36px;
+        margin-bottom: 30px;
+        // Responsive
+        @media #{$desktop-device}{
+            font-size: 20px;
+            line-height: 28px;
+        }
+        @media #{$large-mobile}{
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+    & p {
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    & .contact-text{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 28px;
+    }
+    & .opeaning-title{
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    & ul.address {
+        & li {
+            display: flex;
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 12px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            & i {
+                margin-right: 15px;
+                line-height: 28px;
+                font-size: 18px;
+            }
+            & span {
+                overflow: hidden;
+            }
+            & a {
+                display: block;
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+    & > .ft-menu{
+        display: inline-block;
+        & > li{
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            & > a{
+                text-transform: capitalize;
+                text-decoration: none;
+                display: inherit;
+                transition: all 0.4s ease-out;
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+/*-- Footer Bottom --*/
+.footer-bottom{
+    border-top: 1px solid #dddddd;
+}
+/*-- Copyright --*/
+.copyright {
+    // Responsive
+    @media #{$large-mobile}{
+        text-align: center !important;
+    }
+    & p {
+        line-height: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        // Responsive
+        @media #{$large-mobile}{
+            margin-bottom: 15px;
+        }
+        & a {
+            color: $theme-color;
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+}

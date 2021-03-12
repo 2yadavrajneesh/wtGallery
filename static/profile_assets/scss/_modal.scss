@@ -1,0 +1,88 @@
+/*---------------------------------------
+    21. Modal CSS
+-----------------------------------------*/
+.quick-view-modal-container{
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  
+  
+    &.show{
+        visibility: visible;
+        opacity: 1;
+        z-index: 99999;
+    }
+  
+    .modal-dialog{
+        max-width: 80%;
+  
+        @media #{$tablet-device}{
+            max-width: 95%;
+        }
+  
+        @media #{$large-mobile}{
+            max-width: 100%;
+        }
+  
+        @media #{$small-mobile}{
+            max-width: 100%;
+        }
+    }
+  
+    .modal-header{
+        border: none;
+        padding-bottom: 0;
+  
+        button{
+            z-index: 999;
+        }
+    }
+  
+    .modal-body{
+        padding: 30px 50px 70px 50px;
+  
+        @media #{$desktop-device}{
+            padding: 30px 30px 30px 30px;
+        }
+  
+        @media #{$tablet-device}{
+            padding: 30px 30px 30px 30px;
+        }
+  
+        @media #{$large-mobile}{
+            padding: 15px 15px 15px 15px;
+        }
+  
+        @media #{$extra-small-mobile}{
+            padding: 15px 15px 15px 15px;
+        }
+    }
+  
+    .modal-content{
+        border-radius: 0;
+        max-height: 850px;
+        overflow: auto;
+        
+        @media #{$laptop-device}{
+            max-height: 500px;
+            overflow: auto;
+        }
+  
+        @media #{$desktop-device}{
+            max-height: 500px;
+            overflow: auto;
+        }
+  
+        @media #{$tablet-device}{
+            max-height: 500px;
+            overflow: auto;
+        }
+  
+        @media #{$large-mobile}{
+            max-height: 500px;
+            overflow: auto;
+        }
+    }
+  
+  }

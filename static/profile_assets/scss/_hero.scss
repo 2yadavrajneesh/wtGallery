@@ -1,0 +1,352 @@
+/*----------------------------------------*/
+/*  03. Hero CSS
+/*----------------------------------------*/
+.hero-section {
+
+}
+/*-- Hero Slider --*/
+.hero-slider {
+    & .slick-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9;
+        border: none;
+        background-color: transparent;
+        color: $theme-color;
+        padding: 10px;
+        width: 54px;
+        height: 54px;
+        border-radius: 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba($black, 0.15);
+        opacity: 0;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid $theme-color;
+            background-color: transparent;
+            transition: all 0.3s ease 0s;
+        }
+        & i {
+            font-size: 24px;
+            line-height: 30px;
+            display: block;
+        }
+        &.slick-prev {
+            left: 40px;
+            margin-left: 30px;
+            // Responsive
+            @media #{$laptop-device}{
+                left: 8px;
+            }
+            @media #{$desktop-device}{
+                left: 8px;
+            }
+            @media #{$tablet-device}{
+                left: 8px;
+            }
+            @media #{$large-mobile}{
+                left: 8px;
+            }
+        }
+        &.slick-next {
+            right: 40px;
+            margin-right: 30px;
+            // Responsive
+            @media #{$laptop-device}{
+                right: 8px;
+            }
+            @media #{$desktop-device}{
+                right: 8px;
+            }
+            @media #{$tablet-device}{
+                right: 8px;
+            }
+            @media #{$large-mobile}{
+                right: 8px;
+            }
+        }
+        &:hover {
+            background-color: $theme-color;
+            color: $white;
+            &::before {
+                margin-left: 6px;
+                margin-top: 6px;
+            }
+        }
+    }
+    &:hover {
+        & .slick-arrow {
+            opacity: 1;
+            &.slick-prev {
+                margin-left: 0;
+            }
+            &.slick-next {
+                margin-right: 0;
+            }
+        }
+    }
+    & .slick-dots {
+        position: absolute;
+        left: 0;
+        bottom: 40px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        // Responsive
+        @media #{$tablet-device}{
+            bottom: 20px;
+        }
+        @media #{$large-mobile}{
+            bottom: 20px;
+        }
+        @media #{$small-mobile}{
+            bottom: 15px;
+        }
+        & li {
+            margin: 0 5px;
+            & button {
+                display: block;
+                padding: 0;
+                width: 15px;
+                height: 15px;
+                border: 3px solid $theme-color;
+                background-color: $heading-color;
+                text-indent: -9999px;
+                border-radius: 50px;
+                @media #{$large-mobile}{
+                    border-width: 2px;
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+            &.slick-active {
+                & button {
+                    width: 30px;
+                    background-color: $theme-color;
+                    @media #{$large-mobile}{
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*-- Hero Item --*/
+.hero-item {
+    width: 100%;
+    height: 800px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &.large-height{
+        height: 900px;
+        // Responsive
+        @media #{$laptop-device}{
+            height: 700px;
+        }
+        @media #{$desktop-device}{
+            height: 700px;
+        }
+        @media #{$tablet-device}{
+            height: 500px;
+        }
+        @media #{$large-mobile}{
+            height: 400px;
+        }
+    }
+    // Responsive
+    @media #{$desktop-device}{
+        height: 600px;
+    }
+    @media #{$tablet-device}{
+        height: 500px;
+    }
+    @media #{$large-mobile}{
+        height: 400px;
+    }
+}
+
+/*-- Hero Content For Background Video --*/
+.hero-content {
+    text-align: center;
+    & h2 {
+        font-size: 32px;
+        line-height: 1;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $white;
+        margin-bottom: 20px;
+        
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 24px;
+        }
+        @media #{$small-mobile}{
+            font-size: 22px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 18px;
+        }
+    }
+    & h1 {
+        font-size: 90px;
+        line-height: 1;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $white;
+        margin-bottom: 20px;
+        
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 60px;
+        }
+        @media #{$small-mobile}{
+            font-size: 50px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 44px;
+        }
+    }
+    & h3 {
+        font-size: 24px;
+        color: $white;
+        margin-bottom: 40px;
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 18px;
+        }
+        @media #{$small-mobile}{
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 14px;
+        }
+    }
+    & .btn {}
+}
+/*-- Hero Content Two For Hero Slider --*/
+.hero-content-2 {
+    margin-top: 140px;
+    // Responsive
+    @media #{$desktop-device}{
+        margin-top: 70px;
+    }
+    @media #{$tablet-device}{
+        margin-top: 60px;
+    }
+    @media #{$large-mobile}{
+        margin-top: 30px;
+    }
+    &.margin-top{
+        margin-top: 200px;
+        // Responsive
+        @media #{$laptop-device}{
+            margin-top: 140px;
+        }
+        @media #{$desktop-device}{
+            margin-top: 140px;
+        }
+        @media #{$tablet-device}{
+            margin-top: 60px;
+        }
+        @media #{$large-mobile}{
+            margin-top: 30px;
+        }
+    }
+    &.left {
+        text-align: left;
+    }
+    &.center {
+        text-align: center;
+    }
+    &.right {
+        text-align: right;
+    }
+    
+    // All Element Selector
+    & > * {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+    }
+    & h2 {
+        font-size: 56px;
+        line-height: 64px;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: $heading-color;
+        margin-bottom: 30px;
+        
+        // Responsive
+        @media #{$desktop-device}{
+            font-size: 50px;
+            line-height: 56px
+        }
+        @media #{$tablet-device}{
+            font-size: 40px;
+            line-height: 46px;
+            margin-bottom: 15px;
+        }
+        @media #{$large-mobile}{
+            font-size: 22px;
+            line-height: 28px;
+            margin-bottom: 10px;
+        }
+    }
+    & p {
+        font-size: 16px;
+        color: $white;
+        max-width: 650px;
+        margin-bottom: 40px;
+    }
+    & .btn {
+        font-size: 18px;
+    }
+}
+/*-- Slide Content In Animation --*/
+.slick-active {
+
+    /*-- Hero Content Two For Hero Slider --*/
+    & .hero-content-2 {
+
+        // All Element Selector
+        & > * {
+            animation-name: fadeInUp;
+            
+            // Child Selector
+            &:nth-child(1) {
+                animation-delay: 0.5s;
+            }
+            &:nth-child(2) {
+                animation-delay: 1s;
+            }
+            &:nth-child(3) {
+                animation-delay: 1.5s;
+            }
+            &:nth-child(4) {
+                animation-delay: 2s;
+            }
+            &:nth-child(5) {
+                animation-delay: 2.5s;
+            }
+            &:nth-child(6) {
+                animation-delay: 3s;
+            }
+            
+        }
+    }
+    
+}

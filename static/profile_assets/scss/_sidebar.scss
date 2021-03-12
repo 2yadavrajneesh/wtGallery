@@ -1,0 +1,313 @@
+/*---------------------------------------
+    17. Sidebar CSS
+-----------------------------------------*/
+
+/*-- Sidebar --*/
+.common-sidebar-widget {
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 50px;
+    padding-bottom: 45px;
+    // Responsive
+    @media #{$tablet-device}{
+        margin-bottom: 40px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 30px;
+    }
+    &.sidebar-two {
+        padding: 0;
+        background-color: transparent;
+    }
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+/*-- Sidebar Title --*/
+.sidebar-title {
+    margin: 0;
+    padding: 0 0 25px;
+    display: block;
+    font-size: 18px;
+    color: $heading-color;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 24px;
+    // Responsive
+    @media #{$desktop-device}{
+        font-size: 16px;
+    }
+}
+/*-- Sidebar Search --*/
+.sidebar-search {
+    & form {
+        display: flex;
+        border: 1px solid #e5e6e7;
+        & input {
+            flex: 1 0 calc(100% - 40px);
+            max-width: calc(100% - 40px);
+            height: 40px;
+            border: none;
+            background-color: transparent;
+            padding: 0 15px;
+            color: $body-color;
+        }
+        & button {
+            max-width: 40px;
+            flex: 1 0 40px;
+            height: 40px;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            & i {
+                font-size: 20px;
+                line-height: 40px;
+            }
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+}
+/*-- Sidebar List --*/
+.sidebar-list {
+    & li {
+        margin-bottom: 12px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        & a {
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 23px;
+            color: $heading-color;
+            display: block;
+            & img {
+                width: 25px;
+                margin-right: 15px;
+            }
+            & i {
+                margin-right: 10px;
+                font-size: 10px;
+            }
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+}
+/*-- Sidebar Price --*/
+.sidebar-price {
+    overflow: hidden;
+    #price-range {
+      position: relative;
+      width: 100%;
+      height: 5px;
+      margin: 7px 0;
+      border-radius: 50px;
+      background-color: #ccc;
+      border: 0;
+      .ui-slider-range {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background-color: $theme-color;
+      }
+      .ui-slider-handle {
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        -webkit-transition: none;
+        transition: none;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-radius: 50px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+        border: 0;
+      }
+    }
+    .price-amount {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 14px;
+      padding: 0;
+      color: $heading-color;
+      border: none;
+      background-color: transparent;
+      display: block;
+    }
+    & button{
+        height: 35px;
+        line-height: 30px;
+        padding: 0 20px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+  }
+/*-- Sidebar Compare --*/
+.compare-products-list {
+    overflow: hidden;
+    & ul{
+        margin-bottom: 20px;
+        li {
+            display: block;
+            padding: 10px 0px;
+            border-bottom: 1px solid #dfdfdf;
+            overflow: hidden;
+          }
+    }
+  }
+  
+  .remove-compare {
+    float: right;
+    display: inline-block;
+    padding-right: 10px;
+    float: right;
+    display: inline-block;
+}
+.clear-btn {
+	float: left;
+	height: 35px;
+	line-height: 35px;
+	display: inline-block;
+}
+.compare-btn {
+    float: right;
+    height: auto;
+    line-height: 1;
+    background: transparent;
+    text-transform: capitalize;
+    text-decoration: underline;
+    color: $heading-color;
+    font-size: 15px;
+    &:hover{
+        color: $heading-color;
+        background: transparent;
+        text-decoration: underline;
+    }
+}
+/*-- Sidebar Blog --*/
+.sidebar-blog {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e6e7;
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+    & .image {
+        max-width: 50px;
+        flex: 1 0 50px;
+        height: 50px;
+        & img {
+            width: 100%;
+        }
+    }
+    & .content {
+        flex: 1 0 calc(100% - 50px);
+        padding-left: 15px;
+        & h5 {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 500;
+            & a {}
+        }
+        & p{
+            margin-bottom: 0;
+        }
+        & span {
+            font-size: 15px;
+            display: block;
+            line-height: 18px;
+        }
+    }
+}
+/*-- Sidebar Tags --*/
+.sidebar-tag {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -5px;
+    & li {
+        padding: 5px;
+        & a {
+            display: block;
+            border: 1px solid #e5e6e7;
+            padding: 5px 10px;
+            font-size: 15px;
+            color: $heading-color;
+            &:hover {
+                background-color: $heading-color;
+                border-color: $heading-color;
+                color: $white;
+            }
+        }
+    }
+}
+/*-- Sidebar Product --*/
+.sidebar-product {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e6e7;
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+    & .image {
+        max-width: 80px;
+        flex: 1 0 80px;
+        & img {
+            width: 100%;
+            border: 1px solid #f1f2f3;
+        }
+    }
+    & .content {
+        flex: 1 0 calc(100% - 80px);
+        padding-left: 15px;
+        & .title {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 5px;
+            & a {}
+        }
+        & .price {
+            & span {
+                &.new {}
+                &.old {
+                    margin-left: 10px;
+                    color: $body-color;
+                    text-decoration: line-through;
+                }
+            }
+        }
+        & .ratting {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+            & i {
+                font-size: 12px;
+                line-height: 18px;
+                margin-right: 5px;
+                color: $theme-color;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

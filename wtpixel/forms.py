@@ -55,7 +55,7 @@ class ImageForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
-        fields = ('title', 'file')
+        fields = ('title', 'file', 'tag')
 
         def save(self):
             video = super(VideoForm, self).save()
@@ -65,7 +65,7 @@ class VideoForm(forms.ModelForm):
 class MusicForm(forms.ModelForm):
     class Meta:
         model = Music
-        fields = ('title', 'file')
+        fields = ('title', 'file', 'tag')
 
         def save(self):
             music = super(MusicForm, self).save()

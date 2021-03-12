@@ -26,6 +26,16 @@ def sitemap(request):
 
 
 @login_required(login_url="/login/")
+def my_account(request):
+    current_user = request.user
+    # us = User.objects.filter(pk=current_user.id)
+    image = Image.objects.filter(user=current_user.id)
+    video = Video.objects.filter(user=current_user.id)
+    music = Music.objects.filter(user=current_user.id)
+    return render(request, "my-account.html", {'image': image, 'video': video, 'music': music})
+
+
+@login_required(login_url="/login/")
 def dashb(request):
     if request.method == 'POST':
         pic_id = int(request.POST.get("pic_id"))
@@ -87,19 +97,19 @@ def profile(request, username):
 
 
 def image(request):
-    portfolio = Image.objects.all()
+    portfolio = Image.objects.all().order_by('-uploaded_at')
     context = {"portfolio": portfolio}
     return render(request, "images.html", context)
 
 
 def video(request):
-    portfolio = Video.objects.all()
+    portfolio = Video.objects.all().order_by('-uploaded_at')
     context = {"portfolio": portfolio}
     return render(request, "video.html", context)
 
 
 def music(request):
-    portfolio = Music.objects.all()
+    portfolio = Music.objects.all().order_by('-uploaded_at')
     print(portfolio)
     context = {"portfolio": portfolio}
     return render(request, "music.html", context)
@@ -224,6 +234,18 @@ def upload(request):
 
                 return redirect('upload')
 
+        elif ext == ".mov":
+            print("mov file!")
+
+            if video.is_valid:
+                # form.save()
+                fs = video.save(commit=False)
+                fs.user = request.user
+                fs.save()
+                messages.success(request, 'Video successfully Uploaded.')
+
+                return redirect('upload')
+
         elif ext == ".mp3":
             print("mp3 file!")
 
@@ -268,7 +290,7 @@ def upload(request):
         #
         #     return redirect('upload')
     else:
-        form = ImageForm() or VideoForm()
+        form = ImageForm() or VideoForm() or MusicForm()
     return render(request, 'upload.html', {'form': form})
 
 
@@ -279,7 +301,9 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Image.objects.filter(Q(title__icontains=query) | Q(tag__icontains=query) | Q(file__icontains=query))
+        object_list = Image.objects.filter(
+            Q(title__icontains=query) | Q(tag__icontains=query) | Q(file__icontains=query)) or Video.objects.filter(
+            Q(title__icontains=query) | Q(tag__icontains=query) | Q(file__icontains=query))
         return object_list
 
 

@@ -3,6 +3,11 @@
 {% block title %} Home {% endblock %}
 {% block style %}
 <style>
+  .btn-sm {
+      padding: 2px 8px;
+      font-size: 10px;
+      border-radius: 5px;
+  }
   .custom-button {
     font-size:0.5em;
     padding:2px;
@@ -131,7 +136,7 @@
                   <a href="{{ portfolio.file.url }}" onclick="dow({{portfolio.id}})" class="details-link" title="Download" download>
                     <i class='bx bxs-download pl-2'></i>
                   </a>
-                  <div style="font-size: 11px">
+                  <div style="font-size: 11px" class="mt-1">
                     {% if user.is_authenticated %}
                       {% if user.username in portfolio.likes %}
                         <button type="submit" onclick="like({{portfolio.id}});" name="post_id" id="ul{{portfolio.id}}" value="{{portfolio.id}}" class="btn btn-primary btn-sm">Unlike</button>
@@ -139,7 +144,7 @@
                         <button type="submit" onclick="like({{portfolio.id}});" name="post_id" id="l{{portfolio.id}}" value="{{portfolio.id}}" class="btn btn-primary btn-sm">Like</button>
                       {% endif %}
                     {% else %}
-                      <a class="btn btn-outline-info btn-sm mt-2 mb-2" href="{% url 'login' %}">Log in to like this article</a><br>
+                      <a class="btn btn-outline-info btn-sm mt-2 mb-2" href="{% url 'login' %}">Log in</a><br>
                     {% endif %}
                       <strong class="text-secondary" ><i class='bx bxs-like pl-2'></i> <span id="total_likes{{portfolio.id}}">{{portfolio.number_of_liked}}</span></strong>
                     &nbsp &nbsp

@@ -24,13 +24,13 @@
               <video id="my-video" onclick="videoviews({{portfolio.id}})" class="video-js vjs-theme-forest" controls preload="auto" width="360" height="264" data-setup="{}">
                 <source src="{{ portfolio.file.url }}" type="video/mp4">
               </video>
-              <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 12px;">
+              <div class="mx-auto my-1 col-lg-12 d-block" style="font-size: 13px;">
                 <p class="float-left">
-                  <span class="font-weight-bold">Uploaded by:</span> <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a>
+                  <span class="font-weight-bold">Upload by:</span> <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a>
                 </p>
                 <p class="float-right">
-                  <span class="font-weight-bold" id="views{{portfolio.id}}">Views: {{portfolio.views}}</span>
-                  <a class="ml-2" href="{{ portfolio.file.url }}" download> Download</a>
+                  <span class="font-weight-bold" id="views{{portfolio.id}}"><i class="fas fa-eye mr-1"></i>: {{portfolio.views}}</span>
+                  <a class="ml-2 font-weight-bold" href="{{ portfolio.file.url }}" download> <i class="fas fa-download"></i></a>
                 </p>
               </div>
           </div>

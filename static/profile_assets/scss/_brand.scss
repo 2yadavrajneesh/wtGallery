@@ -1,0 +1,31 @@
+/*----------------------------------------*/
+/*  18. Brand CSS
+/*----------------------------------------*/
+
+/*-- Brand Slider --*/
+.brand-slider, .brand-slider-two, .brand-slider-three{
+    & .slick-dots {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/*-- Brand --*/
+.single-brand {
+    background: #fff;
+    padding: 20px;
+    position: relative;
+    // Responsive
+    @media #{$large-mobile}{
+        padding: 10px;
+    }
+    & .brand-image{
+        position: relative;
+        overflow: hidden;
+        & img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+

@@ -3,6 +3,11 @@
 {% block title %} Home {% endblock %}
 {% block style %}
 <style>
+.btn-sm {
+  padding: 2px 8px;
+  font-size: 10px;
+  border-radius: 5px;
+}
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
@@ -199,46 +204,37 @@
 {% block body %}
 
 <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-                        </a>
+    </div>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
 
-                    </div>
-                    <!-- ======= Portfolio Section ======= -->
-                    <section id="portfolio" class="portfolio">
-                      <div class="container">
+        <div class="row portfolio-container">
+          {% for portfolio in portfolios %}
+          {% if portfolio.status == 'Pending' %}
+          <div class="col-lg-4 col-md-6 portfolio-item">
+            <img src="{{ portfolio.file.url }}" class="img-fluid" alt="{{ portfolio.title }}">
+            <div class="portfolio-info">
+              <h4 style="text-transform: capitalize;">{{ portfolio.title }}</h4>
+              <p style="font-size: 11px">Uploaded by <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a></p>
+                <form role="form" method="post" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="pic_id" value="{{portfolio.id}}">
+                    <button class="btn btn-success details-link btn-sm" name="status" value="Approved" type="submit">Approve</button>
+                </form>
+            </div>
+          </div>
 
-                        <div class="row portfolio-container">
-                          {% for portfolio in portfolios %}
-                          {% if portfolio.status == 'Pending' %}
-                          <div class="col-lg-4 col-md-6 portfolio-item">
-                            <img src="{{ portfolio.file.url }}" class="img-fluid" alt="{{ portfolio.title }}">
-                            <div class="portfolio-info">
-                              <h4 style="text-transform: capitalize;">{{ portfolio.title }}</h4>
-                              <p style="font-size: 11px">Uploaded by <a href="{% url 'profile' username=portfolio.user.username %}">{{portfolio.user}}</a></p>
-                              <a href="{{ portfolio.file.url }}" onclick="views({{portfolio.id}})" data-gall="portfolioGallery" class="venobox preview-link" title="{{ portfolio.title }}">
-                                <i class="bx bx-show-alt"></i>
-                              </a>
-                                <form role="form" method="post" action="">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="pic_id" value="{{portfolio.id}}">
-                                    <button class="btn btn-success details-link btn-sm" name="status" value="Approved" type="submit">Approve</button>
-                                </form>
-                            </div>
-                          </div>
-                          {% else %}
-                            <p>No Data Right Now</p>
+          {% endif %}
+          {% endfor %}
+        </div>
 
-                          {% endif %}
-                          {% endfor %}
-                        </div>
-
-                      </div>
-                    </section>
+      </div>
+    </section>
 
 </div>
 

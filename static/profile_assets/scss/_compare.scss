@@ -1,0 +1,122 @@
+/*---------------------------------------
+    11. Compare CSS
+-----------------------------------------*/
+/*-- Compare Table --*/
+
+.compare-table .table tbody tr {
+    &:first-child {
+      border-top: 1px solid #eeeeee;
+    }
+    td {
+      text-align: center;
+      border: none;
+      padding: 25px 30px;
+      vertical-align: middle;
+      border-bottom: 1px solid #eeeeee;
+      border-left: 1px solid #eeeeee;
+      &:last-child {
+        border-right: 1px solid #eeeeee;
+      }
+      &.first-column {
+        min-width: 180px;
+        font-size: 18px;
+        font-weight: 600;
+        color: $heading-color;
+        margin: 0;
+        line-height: 1;
+      }
+      &.product-image-title {
+        min-width: 310px;
+        vertical-align: bottom;
+        padding-top: 70px;
+        .image {
+          clear: both;
+          width: 100%;
+          margin-bottom: 40px;
+          display: block;
+          img {
+            max-width: 100%;
+          }
+        }
+        .category {
+          float: left;
+          clear: both;
+          font-size: 13px;
+          line-height: 15px;
+          color: #444444;
+          text-transform: capitalize;
+          letter-spacing: 0.5px;
+          &:hover {
+            color: $theme-color;
+          }
+        }
+        .title {
+          float: left;
+          clear: both;
+          font-size: 16px;
+          font-weight: 600;
+          color: #444444;
+          line-height: 20px;
+          margin-bottom: 10px;
+          &:hover {
+            color: $theme-color;
+          }
+        }
+      }
+      &.pro-desc p {
+        text-align: left;
+        margin: 0;
+      }
+      &.pro-price, &.pro-color, &.pro-stock {
+        font-size: 16px;
+        font-weight: 600;
+        color: #444444;
+      }
+      &.pro-addtocart .add-to-cart {
+        position: relative;
+        background-color: $theme-color;
+        color: #fff;
+        border-radius: 50px;
+        display: inline-block;
+        width: 170px;
+        padding: 10px 25px 10px 25px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: #222;
+        }
+        span {
+          font-size: 14px;
+          text-transform: uppercase;
+          font-weight: 700;
+          line-height: 26px;
+          overflow: hidden;
+          display: block;
+          text-align: center;
+        }
+        &.added {
+          padding-left: 25px;
+          padding-right: 56px;
+          i {
+            left: calc(100% - 41px);
+          }
+        }
+      }
+      &.pro-remove button {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          color: $theme-color;
+        }
+        i {
+          font-size: 20px;
+        }
+      }
+      &.pro-ratting i {
+        color: #444444;
+        font-size: 14px;
+      }
+    }
+  }

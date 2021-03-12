@@ -1,0 +1,42 @@
+/*---------------------------------------
+    16. Comment CSS
+-----------------------------------------*/
+
+/*-- Comment Wrap --*/
+.comment-wrapper {
+    & h3 {
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+}
+/*-- Comment Form --*/
+.comment-form {
+    & input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #eeeeee;
+        padding: 5px 20px;
+        color: $body-color;
+    }
+    & textarea {
+        width: 100%;
+        height: 120px;
+        border: 1px solid #eeeeee;
+        padding: 10px 20px;
+        color: $body-color;
+        resize: none;
+    }
+    & input[type="submit"], & button, & .submit {
+        width: auto;
+        height: 50px;
+        border: none;
+        padding: 5px 30px;
+        background-color: $theme-color;
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 700;
+        &:hover {
+            background-color: $heading-color;
+        }
+    }
+}

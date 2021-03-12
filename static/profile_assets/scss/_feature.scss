@@ -1,0 +1,48 @@
+/*----------------------------------------*/
+/*  06. Feature CSS
+/*----------------------------------------*/
+
+.features-section{
+    & .row{
+        & .col-lg-4{
+            &:last-child{
+                & .single-feature{
+                    border-right: 0;
+                }
+            }
+        }
+    } 
+}
+
+/* Single Feature CSS */
+.single-feature{
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #e5e5e5;
+    // Responsive
+    @media #{$large-mobile}{
+        border-right: 0;
+        justify-content: center;
+        text-align: center;
+    }
+    & .feature-image{
+        margin-right: 20px;
+    }
+    & .feature-content{
+        // Responsive
+        @media #{$large-mobile}{
+            text-align: left;
+        }
+        & h4{
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 26px;
+            margin-bottom: 10px;
+        }
+        & p{
+            font-size: 14px;
+            line-height: 24px;
+            max-width: 230px;
+        }
+    }
+}

@@ -1,0 +1,156 @@
+/*----------------------------------------*/
+/*  04. About CSS
+/*----------------------------------------*/
+/* About Page CSS */
+.about-us-content {
+    & span{
+        display: block;
+        font-size: 18px;
+        font-weight: 500;
+        position: relative;
+        margin-bottom: 10px;
+        &::before{
+            position: absolute;
+            content: '';
+            width: 50px;
+            height: 2px;
+            background: #151515;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    & h2{
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: capitalize;
+        color: $heading-color;
+        margin-bottom: 20px;
+        // Responsive
+        @media #{$tablet-device}{
+            font-size: 28px;
+            margin-bottom: 10px;
+            max-width: 470px;
+        }
+        @media #{$large-mobile}{
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    }
+    
+    & p{
+        line-height: 22px;
+        max-width: 470px;
+    }
+  }
+  
+  .about-us-image {
+    overflow: hidden;
+    &.img-full {
+        & img{
+            transition: all 0.5s ease-in-out;
+        }
+    }
+  }
+  
+  .about-us-img-wrapper {
+      &:hover{
+          & .about-us-image{
+              & img{
+                transform: scale(1.2);
+              }
+          }
+      }
+  }
+  
+  
+  .single-team {
+    position: relative;
+    &  .team-image {
+            transition: all 0.4s ease 0s;
+            & a{
+                display: block;
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    & .team-content {
+        bottom: 0;
+        padding: 30px;
+        position: absolute;
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        text-align: center;
+        -webkit-transition: all 0.5s ease 0s;
+        transition: all 0.5s ease 0s;
+        width: 100%;
+        z-index: 4;
+        // Responsive
+        @media #{$tablet-device}{
+            padding: 15px;
+        }
+        @media #{$large-mobile}{
+            padding: 15px;
+        }
+        @media #{$small-mobile}{
+            padding: 30px;
+        }
+        .team-hover-info {
+            background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+            padding: 30px 0;
+            right: 30px;
+            z-index: 2;
+            h2 {
+              color: $white;
+              font-size: 18px;
+              margin-bottom: 14px;
+              text-transform: capitalize;
+              & a{
+                &:hover{
+                    color: $white;
+                }
+            }
+            }
+            .team-social {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              & li{
+                list-style: none;
+                padding: 0 17px;
+                & > a{
+                    & > i{
+                        border: 0 solid transparent;
+                        border-radius: 100%;
+                        color: #fff;
+                        font-size: 14px;
+                        height: auto;
+                        line-height: 20px;
+                        width: auto; 
+                    }
+                    &:hover{
+                        & > i{
+                            color: $theme-color;
+                        }
+                    }
+                }
+              }
+            }
+          }
+      }
+      &:hover{
+          & .team-image{
+              & img{
+                filter: grayscale(100%);
+                transition: all 0.4s ease 0s;
+              }
+          }
+          & .team-content{
+            transform: scaleY(1);
+          }
+      }
+  }

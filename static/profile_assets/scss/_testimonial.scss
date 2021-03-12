@@ -1,0 +1,117 @@
+/*----------------------------------------*/
+/*  08. Testimonial CSS
+/*----------------------------------------*/
+
+/*-- Testimonial --*/
+.testimonial-image{
+    text-align: center;
+    // Responsive
+    @media #{$large-mobile}{
+        margin-bottom: 30px;
+    }
+    & > * {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+    }
+}
+.testimonial{
+    .testimonial-inner {
+        // Responsive
+        @media #{$large-mobile}{
+            padding: 0 10px;
+        }
+        & .testimonial-description{
+            & blockquote{
+                position: relative;
+                font-size: 15px;
+                line-height: 24px;
+                max-width: 505px;
+            }
+        }
+        & .testimonial-author {
+            display: flex;
+            align-items: center;
+            padding-bottom: 25px;
+            // Responsive
+            @media #{$tablet-device}{
+                padding-bottom: 15px;
+            }
+            @media #{$large-mobile}{
+                padding-bottom: 15px;
+            }
+            & .author-thumb{
+                width: 80px;
+                border: 3px solid #d2d2d2;
+                border-radius: 50px;
+                margin-right: 20px;
+                // Responsive 
+                @media #{$large-mobile}{
+                    margin-right: 10px;
+                }
+                & img{
+                    width: 100%;
+                }
+            }
+            & .author-info{
+                & h4{
+                    font-size: 18px;
+                    font-family: $body-font;
+                    line-height: 1.5;
+                    font-weight: 600;
+                    margin-bottom: 0;
+                    // Responsive
+                    @media #{$large-mobile}{
+                        font-size: 16px;
+                    }
+                }
+                & span{
+                    display: block;
+                    font-size: 15px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    // Responsive
+                    @media #{$large-mobile}{
+                        font-size: 13px;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*-- Slide Image In Animation --*/
+.slick-active {
+
+    /*-- Slide Image For Hero Testimonial --*/
+    & .testimonial-image {
+
+        // All Element Selector
+        & > * {
+            animation-name: fadeInUp;
+            
+            // Child Selector
+            &:nth-child(1) {
+                animation-delay: 0.5s;
+            }
+            &:nth-child(2) {
+                animation-delay: 1s;
+            }
+            &:nth-child(3) {
+                animation-delay: 1.5s;
+            }
+            &:nth-child(4) {
+                animation-delay: 2s;
+            }
+            &:nth-child(5) {
+                animation-delay: 2.5s;
+            }
+            &:nth-child(6) {
+                animation-delay: 3s;
+            }
+            
+        }
+    }
+    
+}
