@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'wtgallerydb',  # Your AWS DB name
         'USER': 'wtgalleryadmin',  # Your AWS Username
         'PASSWORD': 'redhat123',  # Your AWS Password
-        'HOST': '',  # Your AWS Hostname
+        'HOST': 'wtgallerymain.cssgwjlhiewv.ap-south-1.rds.amazonaws.com',  # Your AWS Hostname
         'PORT': '5432',
     }
 }
@@ -168,8 +168,8 @@ LOGOUT_REDIRECT_URL = '/'
 # )
 # AWS_DEFAULT_ACL = None
 
-AWS_ACCESS_KEY_ID = ""
-AWS_SECRET_ACCESS_KEY = ""
+AWS_ACCESS_KEY_ID = "AKIA2QMUNTD5LYJEECAV"
+AWS_SECRET_ACCESS_KEY = "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"
 AWS_STORAGE_BUCKET_NAME = "mainwtgallery"
 
 AWS_S3_CLOUDFRONT_DOMAIN_MEDIA = "d2g0zd6flkd76r.cloudfront.net"
