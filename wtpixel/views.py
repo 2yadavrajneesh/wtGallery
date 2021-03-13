@@ -25,6 +25,10 @@ def sitemap(request):
     return render(request, "sitemap.xml")
 
 
+def subscription(request):
+    return render(request, "subscription.html")
+
+
 @login_required(login_url="/login/")
 def my_account(request):
     current_user = request.user

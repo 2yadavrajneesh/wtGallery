@@ -66,6 +66,7 @@
           <li class="drop-down" {% if request.user.is_authenticated %} style="display: none;" {% endif %}><a href="#"><i class="ri-settings-3-line"></i></a>
             <ul>
               <li><a href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'subscription' %}">Get Subscription</a></li>
               <li><a href="{% url 'register' %}">Sign In</a></li>
             </ul>
           </li>
@@ -80,6 +81,7 @@
                 <li><a href="{% url 'image' %}">Image</a></li>
                 <li><a href="{% url 'video' %}">Video</a></li>
                 <li><a href="{% url 'music' %}">Music</a></li>
+                <li><a href="{% url 'subscription' %}">Get Subscription</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               </ul>
             </li>

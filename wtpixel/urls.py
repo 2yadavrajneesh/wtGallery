@@ -20,6 +20,7 @@ urlpatterns = [
     path('upload/', views.upload, name='upload'),
     path('video/', views.video, name='video'),
     path('my_account/', views.my_account, name='my_account'),
+    path('subscription/', views.subscription, name='subscription'),
     path('image/', views.image, name='image'),
     path('music/', views.music, name='music'),
     path('login/', views.login_view, name='login'),
