@@ -45,7 +45,10 @@ class SignUpForm(UserCreationForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('title', 'file', 'tag')
+        fields = ('title', 'file', 'tags')
+        widgets = {
+            'tags': forms.TextInput(attrs={'data-role': 'tagsinput'})
+        }
 
         def save(self):
             image = super(ImageForm, self).save()
@@ -55,7 +58,10 @@ class ImageForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
-        fields = ('title', 'file', 'tag')
+        fields = ('title', 'file', 'tags')
+        widgets = {
+            'tags': forms.TextInput(attrs={'data-role': 'tagsinput'})
+        }
 
         def save(self):
             video = super(VideoForm, self).save()
@@ -65,7 +71,10 @@ class VideoForm(forms.ModelForm):
 class MusicForm(forms.ModelForm):
     class Meta:
         model = Music
-        fields = ('title', 'file', 'tag')
+        fields = ('title', 'file', 'tags')
+        widgets = {
+            'tags': forms.TextInput(attrs={'data-role': 'tagsinput'})
+        }
 
         def save(self):
             music = super(MusicForm, self).save()

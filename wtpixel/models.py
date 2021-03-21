@@ -1,16 +1,7 @@
 # Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
-
-CHOICE_TAG = [
-    ('NT', 'Nature'),
-    ('MT', 'Mountain'),
-    ('WS', 'Water or Sea'),
-    ('CT', 'City'),
-    ('MA', 'Modern Art'),
-    ('SP', 'Space'),
-    ('MU', 'Music'),
-]
+from taggit.managers import TaggableManager
 
 
 class Image(models.Model):
@@ -18,7 +9,7 @@ class Image(models.Model):
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='images', blank=False)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    tag = models.CharField(max_length=255, choices=CHOICE_TAG, default='NT')
+    tags = TaggableManager()
     views = models.IntegerField(default=0)
     total_downloads = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, default=None, blank=True)
@@ -36,7 +27,7 @@ class Video(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='videos', blank=False)
-    tag = models.CharField(max_length=255, choices=CHOICE_TAG, default='Music')
+    tags = TaggableManager()
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
 
@@ -48,7 +39,7 @@ class Music(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255, blank=False)
     file = models.FileField(upload_to='musics', blank=False)
-    tag = models.CharField(max_length=255, choices=CHOICE_TAG, default='Music')
+    tags = TaggableManager()
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
 

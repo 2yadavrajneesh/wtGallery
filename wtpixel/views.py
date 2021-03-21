@@ -2,6 +2,7 @@
 
 import os
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -222,6 +223,7 @@ def upload(request):
                 fs = video.save(commit=False)
                 fs.user = request.user
                 fs.save()
+                video.save_m2m()
                 messages.success(request, 'Video successfully Uploaded.')
 
                 return redirect('upload')
@@ -234,6 +236,7 @@ def upload(request):
                 fs = video.save(commit=False)
                 fs.user = request.user
                 fs.save()
+                video.save_m2m()
                 messages.success(request, 'Video successfully Uploaded.')
 
                 return redirect('upload')
@@ -246,6 +249,7 @@ def upload(request):
                 fs = video.save(commit=False)
                 fs.user = request.user
                 fs.save()
+                video.save_m2m()
                 messages.success(request, 'Video successfully Uploaded.')
 
                 return redirect('upload')
@@ -258,6 +262,7 @@ def upload(request):
                 fs = music.save(commit=False)
                 fs.user = request.user
                 fs.save()
+                music.save_m2m()
                 messages.success(request, 'Music Successfully Uploaded.')
 
                 return redirect('upload')
@@ -273,6 +278,7 @@ def upload(request):
                 fs = image.save(commit=False)
                 fs.user = request.user
                 fs.save()
+                image.save_m2m()
                 messages.success(request, 'Image Successfully Uploaded.')
 
                 return redirect('upload')
