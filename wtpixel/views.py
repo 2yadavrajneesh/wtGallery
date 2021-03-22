@@ -13,12 +13,16 @@ from django.views.generic import ListView
 from wtpixel.forms import ImageForm, SignUpForm, LoginForm, VideoForm, MusicForm
 from django.contrib import messages
 from wtpixel.models import Image, Video, Music
-import nude
+# import nude
 
 
 def index(request):
     portfolio = Image.objects.all().order_by('-uploaded_at')
-    context = {"portfolios": portfolio}
+    common_tags = Image.tags.most_common()[:4]
+    context = {
+        "portfolios": portfolio,
+        "common_tags": common_tags
+    }
     return render(request, "index.html", context)
 
 

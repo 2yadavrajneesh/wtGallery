@@ -64,6 +64,11 @@
                   </button>
                 </span>
               </div>
+              <p>Common Tags:
+                {% for mt in common_tags %}
+                <a href="{% url 'tag' tags=mt %}" class="badge badge-success">{{mt}}</a>
+                {% endfor %}
+              </p>
             </div>
           </div>
       </form>
